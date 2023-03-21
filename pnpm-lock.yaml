@@ -1,34 +1,44 @@
 lockfileVersion: 5.4
 
-specifiers:
-  '@ayloncarrijo/eslint-config': ^1.7.2
-  '@ayloncarrijo/prettier-config': ^1.0.2
-  '@ayloncarrijo/typescript-config': ^2.0.3
-  '@rollup/plugin-commonjs': ^24.0.1
-  '@rollup/plugin-node-resolve': ^15.0.1
-  commitizen: ^4.3.0
-  cz-conventional-changelog: ^3.3.0
-  eslint: ^8.36.0
-  rollup: ^3.20.0
-  rollup-plugin-delete: ^2.0.0
-  rollup-plugin-peer-deps-external: ^2.2.4
-  rollup-plugin-ts: ^3.2.0
-  typescript: 4.9.5
+importers:
 
-devDependencies:
-  '@ayloncarrijo/eslint-config': 1.7.2_vgl77cfdswitgr47lm5swmv43m
-  '@ayloncarrijo/prettier-config': 1.0.2
-  '@ayloncarrijo/typescript-config': 2.0.3_typescript@4.9.5
-  '@rollup/plugin-commonjs': 24.0.1_rollup@3.20.0
-  '@rollup/plugin-node-resolve': 15.0.1_rollup@3.20.0
-  commitizen: 4.3.0
-  cz-conventional-changelog: 3.3.0
-  eslint: 8.36.0
-  rollup: 3.20.0
-  rollup-plugin-delete: 2.0.0
-  rollup-plugin-peer-deps-external: 2.2.4_rollup@3.20.0
-  rollup-plugin-ts: 3.2.0_pn5zetjg24cqcolt42iry5qj6a
-  typescript: 4.9.5
+  .:
+    specifiers:
+      '@ayloncarrijo/eslint-config': ^1.7.2
+      '@ayloncarrijo/prettier-config': ^1.0.2
+      '@ayloncarrijo/typescript-config': ^2.0.3
+      '@rollup/plugin-commonjs': ^24.0.1
+      '@rollup/plugin-node-resolve': ^15.0.1
+      commitizen: ^4.3.0
+      cz-conventional-changelog: ^3.3.0
+      eslint: ^8.36.0
+      rollup: ^3.20.0
+      rollup-plugin-delete: ^2.0.0
+      rollup-plugin-peer-deps-external: ^2.2.4
+      rollup-plugin-ts: ^3.2.0
+      turbo: ^1.8.5
+      typescript: 4.9.5
+    devDependencies:
+      '@ayloncarrijo/eslint-config': 1.7.2_vgl77cfdswitgr47lm5swmv43m
+      '@ayloncarrijo/prettier-config': 1.0.2
+      '@ayloncarrijo/typescript-config': 2.0.3_typescript@4.9.5
+      '@rollup/plugin-commonjs': 24.0.1_rollup@3.20.0
+      '@rollup/plugin-node-resolve': 15.0.1_rollup@3.20.0
+      commitizen: 4.3.0
+      cz-conventional-changelog: 3.3.0
+      eslint: 8.36.0
+      rollup: 3.20.0
+      rollup-plugin-delete: 2.0.0
+      rollup-plugin-peer-deps-external: 2.2.4_rollup@3.20.0
+      rollup-plugin-ts: 3.2.0_pn5zetjg24cqcolt42iry5qj6a
+      turbo: 1.8.5
+      typescript: 4.9.5
+
+  packages/core:
+    specifiers: {}
+
+  packages/react:
+    specifiers: {}
 
 packages:
 
@@ -3179,6 +3189,67 @@ packages:
     dependencies:
       tslib: 1.14.1
       typescript: 4.9.5
+    dev: true
+
+  /turbo-darwin-64/1.8.5:
+    resolution: {integrity: sha512-CAYh56bzeHfnh7jTm03r29bh8p5a/EjQo1Id5yLUH7hS7msTau/+YpxJWPodLbN0UQsUYivUqHQkglJ+eMJ7xA==}
+    cpu: [x64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /turbo-darwin-arm64/1.8.5:
+    resolution: {integrity: sha512-R3jCPOv+lu3dcvMhj8b/Defv6dyUwX6W+tbX7d6YUCA46Plf/bGCQ8+MSbxmr/4E1GyGOVFsn1wRfiYk0us/Dg==}
+    cpu: [arm64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /turbo-linux-64/1.8.5:
+    resolution: {integrity: sha512-YRc/KNRZeUVvth11UO4SDQZR2IqGgl9MSsbzqoHuFz4B4Q5QXH7onHogv9aXWE/BZBBbcrSBTlwBSG0Gg+J8hg==}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /turbo-linux-arm64/1.8.5:
+    resolution: {integrity: sha512-8exVZb7XBl/V3gHSweuUyG2D9IzfWqwLvlXoeLWlVYSj61Ajgdv+WU7lvUmx+H2s+sSKqmIFmewA5Lw6YY37sg==}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /turbo-windows-64/1.8.5:
+    resolution: {integrity: sha512-fA8PU5ZNoFnQkapG06WiEqfsVQ5wbIPkIqTwUsd/M2Lp+KgxE79SQbuEI+2vQ9SmwM5qoMi515IPjgvXAJXgCw==}
+    cpu: [x64]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /turbo-windows-arm64/1.8.5:
+    resolution: {integrity: sha512-SW/NvIdhckLsAWjU/iqBbCB0S8kXupKscUK3kEW1DZIr3MYcP/yIuaE/IdPuqcoF3VP0I3TLD4VTYCCKAo3tKA==}
+    cpu: [arm64]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /turbo/1.8.5:
+    resolution: {integrity: sha512-UBnH2wIFb5g6OQCk8f34Ud15ZXV4xEMmugeDJTU5Ur2LpVRsNEny0isSCYdb3Iu3howoNyyXmtpaxWsAwNYkkg==}
+    hasBin: true
+    requiresBuild: true
+    optionalDependencies:
+      turbo-darwin-64: 1.8.5
+      turbo-darwin-arm64: 1.8.5
+      turbo-linux-64: 1.8.5
+      turbo-linux-arm64: 1.8.5
+      turbo-windows-64: 1.8.5
+      turbo-windows-arm64: 1.8.5
     dev: true
 
   /type-check/0.4.0:
