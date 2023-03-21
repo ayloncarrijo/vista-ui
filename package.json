@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "name": "you-ui",
+  "private": true,
+  "type": "module",
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "scripts": {
+    "commit": "cz"
+  },
+  "devDependencies": {
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0"
+  }
+}
