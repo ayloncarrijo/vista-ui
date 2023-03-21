@@ -15,13 +15,21 @@ import {
 } from "./stitches/theme";
 import type { PropertyValue } from "./types/stitches";
 import type { TypographyToken } from "./types/typography";
+import { createColorSchemes } from "./utils/color-scheme";
+
+const { light } = createColorSchemes({
+  primary: "#7c43ab",
+});
 
 const stitches = createStitches({
   prefix: "youUi",
   themeMap: { ...defaultThemeMap, opacity: "opacities", $$ringColor: "colors" },
   theme: {
     zIndices,
-    colors,
+    colors: {
+      ...colors,
+      ...light,
+    },
     opacities,
     radii,
     shadows,

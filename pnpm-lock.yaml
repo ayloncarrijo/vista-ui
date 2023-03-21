@@ -37,11 +37,15 @@ importers:
   packages/core:
     specifiers:
       '@ayloncarrijo/utilities': 1.0.0-alpha.7
+      '@importantimport/material-color-utilities': 0.2.2-alpha.0
       '@stitches/react': ^1.2.8
       '@types/react': ^18.0.28
+      color-blend: ^4.0.0
       react: ^18.2.0
     dependencies:
       '@ayloncarrijo/utilities': 1.0.0-alpha.7
+      '@importantimport/material-color-utilities': 0.2.2-alpha.0
+      color-blend: 4.0.0
     devDependencies:
       '@stitches/react': 1.2.8_react@18.2.0
       '@types/react': 18.0.28
@@ -252,6 +256,11 @@ packages:
   /@humanwhocodes/object-schema/1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
+
+  /@importantimport/material-color-utilities/0.2.2-alpha.0:
+    resolution: {integrity: sha512-/481q5LRZxr4xFGH++WpTMumCACDTAOZZK+cWrVx95hZ7c0v9q2uVPD/DkP0+iOPUwAxvGWshMPHER3gu1TzHw==}
+    requiresBuild: true
+    dev: false
 
   /@jridgewell/resolve-uri/3.1.0:
     resolution: {integrity: sha512-F2msla3tad+Mfht5cJq7LSXcdudKTWCVYUgw6pLFOOHSTtZlj6SWNYAp+AhuqLmWdBO2X5hPrLcu8cVP8fy28w==}
@@ -905,6 +914,11 @@ packages:
     resolution: {integrity: sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==}
     engines: {node: '>=0.8'}
     dev: true
+
+  /color-blend/4.0.0:
+    resolution: {integrity: sha512-fYODTHhI/NG+B5GnzvuL3kiFrK/UnkUezWFTgEPBTY5V+kpyfAn95Vn9sJeeCX6omrCOdxnqCL3CvH+6sXtIbw==}
+    engines: {node: '>=10.0.0'}
+    dev: false
 
   /color-convert/1.9.3:
     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}
