@@ -1,6 +1,11 @@
 import { createStitches, defaultThemeMap } from "@stitches/react";
 import {
   colors,
+  fonts,
+  fontSizes,
+  fontWeights,
+  letterSpacings,
+  lineHeights,
   opacities,
   radii,
   shadows,
@@ -9,6 +14,7 @@ import {
   zIndices,
 } from "./stitches/theme";
 import type { PropertyValue } from "./types/stitches";
+import type { TypographyToken } from "./types/typography";
 
 const stitches = createStitches({
   prefix: "youUi",
@@ -21,6 +27,11 @@ const stitches = createStitches({
     shadows,
     sizes,
     space,
+    fonts,
+    fontSizes,
+    fontWeights,
+    letterSpacings,
+    lineHeights,
   },
   media: {
     sm: "(min-width: 480px)",
@@ -93,6 +104,13 @@ const stitches = createStitches({
     }),
     ringColor: (value: PropertyValue<"color">) => ({
       $$ringColor: value,
+    }),
+    typography: (value: `$${TypographyToken}`) => ({
+      fontFamily: value,
+      fontSize: value,
+      fontWeight: value,
+      letterSpacing: value,
+      lineHeight: value,
     }),
   },
 });
