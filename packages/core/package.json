@@ -1,0 +1,24 @@
+{
+  "version": "1.0.0",
+  "name": "@you-ui/core",
+  "license": "MIT",
+  "type": "module",
+  "module": "./build/esm/index.mjs",
+  "main": "./build/cjs/index.cjs",
+  "types": "./build/esm/index.d.mts",
+  "exports": {
+    ".": {
+      "import": "./build/esm/index.mjs",
+      "require": "./build/cjs/index.cjs",
+      "types": "./build/esm/index.d.mts"
+    }
+  },
+  "files": [
+    "build"
+  ],
+  "scripts": {
+    "build": "rollup --config",
+    "dev": "rollup --config --watch",
+    "prepare": "pnpm build"
+  }
+}
