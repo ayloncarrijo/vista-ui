@@ -1,3 +1,5 @@
+import { baseStyles } from "@you-ui/core";
+
 /** @type { import('@storybook/react').Preview } */
 
 const preview = {
@@ -10,6 +12,14 @@ const preview = {
       },
     },
   },
+  decorators: [
+    (Story) => (
+      <>
+        {baseStyles()}
+        <Story />
+      </>
+    ),
+  ],
 };
 
 export default preview;

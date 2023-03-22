@@ -24,7 +24,8 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@ayloncarrijo/utilities": "1.0.0-alpha.7"
+    "@ayloncarrijo/utilities": "1.0.0-alpha.7",
+    "@radix-ui/react-aspect-ratio": "^1.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.21.3",
