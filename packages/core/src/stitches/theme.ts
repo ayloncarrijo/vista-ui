@@ -11,8 +11,8 @@ export const zIndices = {
 };
 
 export const colors = {
-  disabledContainer: "rgba($onSurface, $opacities$disabledContainer)",
-  disabledContent: "rgba($onSurface, $opacities$disabledContent)",
+  disabledContainer: "$onSurface/$opacities$disabledContainer",
+  disabledContent: "$onSurface/$opacities$disabledContent",
 };
 
 export const opacities = {

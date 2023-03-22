@@ -2,6 +2,7 @@ import {
   capitalize,
   createFromEntries,
   getEntries,
+  isString,
 } from "@ayloncarrijo/utilities";
 import type * as Material from "@importantimport/material-color-utilities";
 import {
@@ -63,9 +64,7 @@ const convertArgbToRgba = (color: number, alpha = 1): Rgba => ({
 });
 
 const convertColorToArgb = (color: Color): number =>
-  typeof color === "string"
-    ? argbFromHex(color)
-    : argbFromRgb(color.r, color.g, color.b);
+  isString(color) ? argbFromHex(color) : argbFromRgb(color.r, color.g, color.b);
 
 const convertValuesToRgb = <T extends Record<string, number>>(
   obj: T
@@ -73,7 +72,7 @@ const convertValuesToRgb = <T extends Record<string, number>>(
   createFromEntries(
     getEntries(obj).map(([key, value]) => {
       const { r, g, b } = convertArgbToRgba(value);
-      return [key, `${r}, ${g}, ${b}`];
+      return [key, `${r} ${g} ${b}`];
     })
   );
 

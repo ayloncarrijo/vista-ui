@@ -1,3 +1,4 @@
+import type * as Stitches from "@stitches/react";
 import { createStitches, defaultThemeMap } from "@stitches/react";
 import {
   colors,
@@ -13,17 +14,27 @@ import {
   space,
   zIndices,
 } from "./stitches/theme";
-import type { PropertyValue } from "./types/stitches";
 import type { TypographyToken } from "./types/typography";
 import { createColorSchemes } from "./utils/color-scheme";
+import { createRgbUtilities } from "./utils/stitches";
 
 const { light } = createColorSchemes({
   primary: "#7c43ab",
 });
 
+const privateThemeMap: Record<string, string> = {
+  $$ringColor: "colors",
+};
+
+const themeMap = {
+  ...defaultThemeMap,
+  ...privateThemeMap,
+  opacity: "opacities",
+} as const;
+
 const stitches = createStitches({
   prefix: "youUi",
-  themeMap: { ...defaultThemeMap, opacity: "opacities", $$ringColor: "colors" },
+  themeMap,
   theme: {
     zIndices,
     colors: {
@@ -48,53 +59,54 @@ const stitches = createStitches({
     xl: "(min-width: 1440px)",
   },
   utils: {
-    m: (value: PropertyValue<"margin">) => ({
+    ...createRgbUtilities(themeMap),
+    m: (value: Stitches.PropertyValue<"margin">) => ({
       margin: value,
     }),
-    mt: (value: PropertyValue<"margin">) => ({
+    mt: (value: Stitches.PropertyValue<"margin">) => ({
       marginTop: value,
     }),
-    mr: (value: PropertyValue<"margin">) => ({
+    mr: (value: Stitches.PropertyValue<"margin">) => ({
       marginRight: value,
     }),
-    mb: (value: PropertyValue<"margin">) => ({
+    mb: (value: Stitches.PropertyValue<"margin">) => ({
       marginBottom: value,
     }),
-    ml: (value: PropertyValue<"margin">) => ({
+    ml: (value: Stitches.PropertyValue<"margin">) => ({
       marginLeft: value,
     }),
-    mx: (value: PropertyValue<"margin">) => ({
+    mx: (value: Stitches.PropertyValue<"margin">) => ({
       marginLeft: value,
       marginRight: value,
     }),
-    my: (value: PropertyValue<"margin">) => ({
+    my: (value: Stitches.PropertyValue<"margin">) => ({
       marginTop: value,
       marginBottom: value,
     }),
-    p: (value: PropertyValue<"padding">) => ({
+    p: (value: Stitches.PropertyValue<"padding">) => ({
       padding: value,
     }),
-    pt: (value: PropertyValue<"padding">) => ({
+    pt: (value: Stitches.PropertyValue<"padding">) => ({
       paddingTop: value,
     }),
-    pr: (value: PropertyValue<"padding">) => ({
+    pr: (value: Stitches.PropertyValue<"padding">) => ({
       paddingRight: value,
     }),
-    pb: (value: PropertyValue<"padding">) => ({
+    pb: (value: Stitches.PropertyValue<"padding">) => ({
       paddingBottom: value,
     }),
-    pl: (value: PropertyValue<"padding">) => ({
+    pl: (value: Stitches.PropertyValue<"padding">) => ({
       paddingLeft: value,
     }),
-    px: (value: PropertyValue<"padding">) => ({
+    px: (value: Stitches.PropertyValue<"padding">) => ({
       paddingLeft: value,
       paddingRight: value,
     }),
-    py: (value: PropertyValue<"padding">) => ({
+    py: (value: Stitches.PropertyValue<"padding">) => ({
       paddingTop: value,
       paddingBottom: value,
     }),
-    size: (value: PropertyValue<"width">) => ({
+    size: (value: Stitches.PropertyValue<"width">) => ({
       width: value,
       height: value,
     }),
@@ -110,7 +122,7 @@ const stitches = createStitches({
     ringWidth: (value: number) => ({
       $$ringWidth: `${value}px`,
     }),
-    ringColor: (value: PropertyValue<"color">) => ({
+    ringColor: (value: Stitches.PropertyValue<"color">) => ({
       $$ringColor: value,
     }),
     typography: (value: `$${TypographyToken}`) => ({
