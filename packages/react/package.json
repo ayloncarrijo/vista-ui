@@ -18,7 +18,34 @@
   ],
   "scripts": {
     "build": "rollup --config",
-    "dev": "rollup --config --watch",
-    "prepare": "pnpm build"
+    "dev": "pnpm storybook",
+    "prepare": "pnpm build",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "@ayloncarrijo/utilities": "1.0.0-alpha.7"
+  },
+  "devDependencies": {
+    "@stitches/react": "^1.2.8",
+    "@storybook/addon-essentials": "7.0.0-rc.5",
+    "@storybook/addon-interactions": "7.0.0-rc.5",
+    "@storybook/addon-links": "7.0.0-rc.5",
+    "@storybook/blocks": "7.0.0-rc.5",
+    "@storybook/react": "7.0.0-rc.5",
+    "@storybook/react-webpack5": "7.0.0-rc.5",
+    "@storybook/testing-library": "0.0.14-next.1",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@you-ui/core": "workspace:*",
+    "prop-types": "15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "7.0.0-rc.5"
+  },
+  "peerDependencies": {
+    "@you-ui/core": "workspace:*",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   }
 }
