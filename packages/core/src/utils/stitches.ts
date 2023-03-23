@@ -6,7 +6,7 @@ import {
 import type { DefaultThemeMap } from "@stitches/react";
 
 export const addRgbToColorToken = (value: string): string =>
-  value.replace(/(\$.*?(?=$|\s))/, "rgb($1)");
+  value.replace(/(\$.*?(?=$|\s))/g, "rgb($1)");
 
 export const createRgbUtilities = (
   themeMap: DefaultThemeMap

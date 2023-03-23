@@ -52,7 +52,7 @@ export const createTypographyScales = <
 export const createTypographyVariants = (): Record<TypographyToken, Css> => {
   const roles = ["display", "headline", "title", "body", "label"] as const;
 
-  const sizes = ["sm", "md", "lg"] as const;
+  const sizes = ["lg", "md", "sm"] as const;
 
   const tokens = roles.flatMap((role) =>
     sizes.map((size) => `${role}${capitalize(size)}` as const)

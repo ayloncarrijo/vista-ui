@@ -33,12 +33,14 @@ const meta: Meta<AspectRatioProps> = {
 export default meta;
 
 export const Widescreen: StoryObj<AspectRatioProps> = {
+  name: "16 / 9",
   args: {
     ratio: 16 / 9,
   },
 };
 
 export const Square: StoryObj<AspectRatioProps> = {
+  name: "1 / 1",
   args: {
     ratio: 1 / 1,
   },
