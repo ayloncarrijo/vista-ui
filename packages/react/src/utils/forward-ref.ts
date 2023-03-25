@@ -1,9 +1,9 @@
 import React from "react";
 import type {
-  ForwardRefComponent,
-  ForwardRefRenderFunction,
+  PolymorphicComponent,
+  PolymorphicRenderFunction,
 } from "../types/forward-ref";
 
 export const forwardRef = React.forwardRef as <Props, DefaultAs>(
-  render: ForwardRefRenderFunction<Props, DefaultAs>
-) => ForwardRefComponent<Props, DefaultAs>;
+  render: PolymorphicRenderFunction<Props, DefaultAs>
+) => PolymorphicComponent<Props, DefaultAs>;

@@ -29,12 +29,20 @@ export type ColorGroup<T extends string, V> = {
 };
 
 export type ColorScheme = ColorGroup<HelperColor, string> &
-  Record<keyof ReturnType<Material.Scheme["toJSON"]>, string> & {
-    surface1: string;
-    surface2: string;
-    surface3: string;
-    surface4: string;
-    surface5: string;
+  Record<
+    Exclude<
+      keyof ReturnType<Material.Scheme["toJSON"]>,
+      "background" | "onBackground" | "surfaceVariant"
+    >,
+    string
+  > & {
+    surfaceDim: string;
+    surfaceBright: string;
+    surfaceContainerLowest: string;
+    surfaceContainerLow: string;
+    surfaceContainer: string;
+    surfaceContainerHigh: string;
+    surfaceContainerHighest: string;
   };
 
 export type ColorSchemes = Record<SchemeType, ColorScheme>;

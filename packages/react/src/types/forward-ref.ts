@@ -4,7 +4,7 @@ import type { Css } from "@you-ui/core";
 // TODO: Review performance of generic constraints
 // https://github.com/microsoft/TypeScript/issues/53035
 
-interface StitchesProps<As> {
+export interface StitchesProps<As> {
   as?: As;
   css?: Css;
 }
@@ -17,15 +17,27 @@ export type ComponentRef<As> = As extends React.ElementType
   ? React.ComponentRef<As>
   : never;
 
-export type DefaultAs<T> = T extends ForwardRefComponent<unknown, infer As>
-  ? As
+export type DefaultAs<T> = T extends PolymorphicComponent<
+  unknown,
+  infer DefaultAs
+>
+  ? DefaultAs
   : never;
 
-export type ForwardRefRenderFunction<Props, As> = (
-  props: PropsWithAs<Props, As>,
-  ref: React.ForwardedRef<ComponentRef<As>>
+export type PolymorphicRenderFunction<Props, DefaultAs> = (
+  props: PropsWithAs<Props, DefaultAs>,
+  ref: React.ForwardedRef<ComponentRef<DefaultAs>>
 ) => React.ReactElement | null;
 
-export type ForwardRefComponent<Props, DefaultAs> = <As = DefaultAs>(
+export type PolymorphicComponent<Props, DefaultAs> = <As = DefaultAs>(
   props: PropsWithAs<Props, As> & React.RefAttributes<ComponentRef<As>>
 ) => React.ReactElement | null;
+
+export type PolymorphicComponentProps<T> = T extends PolymorphicComponent<
+  infer Props,
+  infer DefaultAs
+>
+  ? PropsWithAs<Props, DefaultAs>
+  : never;
+
+export type PolymorphicComponentRef<T> = ComponentRef<DefaultAs<T>>;

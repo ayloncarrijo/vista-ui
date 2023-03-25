@@ -19,8 +19,8 @@ export const baseStyles = globalCss({
   body: {
     margin: 0,
     lineHeight: "inherit",
-    backgroundColor: "$background",
-    color: "$onBackground",
+    backgroundColor: "$surface",
+    color: "$onSurface",
   },
 
   hr: {

@@ -3,6 +3,8 @@ import {
   createFromEntries,
   getEntries,
   isString,
+  omit,
+  type NonNullableEntry,
 } from "@ayloncarrijo/utilities";
 import type * as Material from "@importantimport/material-color-utilities";
 import {
@@ -13,7 +15,6 @@ import {
   redFromArgb,
   themeFromSourceColor,
 } from "@importantimport/material-color-utilities";
-import { normal } from "color-blend";
 import type {
   Color,
   ColorGroup,
@@ -51,11 +52,6 @@ const flattenCustomColors = (
       {}
     ) as CustomColors;
 
-const blendColors = (backdrop: Rgba, source: Rgba): number => {
-  const { r, g, b } = normal(backdrop, source);
-  return argbFromRgb(r, g, b);
-};
-
 const convertArgbToRgba = (color: number, alpha = 1): Rgba => ({
   r: redFromArgb(color),
   g: greenFromArgb(color),
@@ -77,35 +73,37 @@ const convertValuesToRgb = <T extends Record<keyof T, number>>(
   );
 
 const extractColorScheme = (
-  { schemes, customColors }: Material.Theme,
+  { schemes, customColors, palettes }: Material.Theme,
   schemeType: SchemeType
 ): ColorScheme => {
   const scheme = schemes[schemeType];
 
   return convertValuesToRgb({
-    ...scheme.toJSON(),
-    surface1: blendColors(
-      convertArgbToRgba(scheme.surface),
-      convertArgbToRgba(scheme.primary, 0.05)
-    ),
-    surface2: blendColors(
-      convertArgbToRgba(scheme.surface),
-      convertArgbToRgba(scheme.primary, 0.08)
-    ),
-    surface3: blendColors(
-      convertArgbToRgba(scheme.surface),
-      convertArgbToRgba(scheme.primary, 0.11)
-    ),
-    surface4: blendColors(
-      convertArgbToRgba(scheme.surface),
-      convertArgbToRgba(scheme.primary, 0.12)
-    ),
-    surface5: blendColors(
-      convertArgbToRgba(scheme.surface),
-      convertArgbToRgba(scheme.primary, 0.14)
-    ),
+    ...omit(scheme.toJSON(), ["background", "onBackground", "surfaceVariant"]),
+    ...{
+      light: {
+        surface: palettes.neutral.tone(98),
+        surfaceDim: palettes.neutral.tone(87),
+        surfaceBright: palettes.neutral.tone(98),
+        surfaceContainerLowest: palettes.neutral.tone(100),
+        surfaceContainerLow: palettes.neutral.tone(96),
+        surfaceContainer: palettes.neutral.tone(94),
+        surfaceContainerHigh: palettes.neutral.tone(92),
+        surfaceContainerHighest: palettes.neutral.tone(90),
+      },
+      dark: {
+        surface: palettes.neutral.tone(6),
+        surfaceDim: palettes.neutral.tone(6),
+        surfaceBright: palettes.neutral.tone(24),
+        surfaceContainerLowest: palettes.neutral.tone(4),
+        surfaceContainerLow: palettes.neutral.tone(10),
+        surfaceContainer: palettes.neutral.tone(12),
+        surfaceContainerHigh: palettes.neutral.tone(17),
+        surfaceContainerHighest: palettes.neutral.tone(22),
+      },
+    }[schemeType],
     ...flattenCustomColors(customColors, schemeType),
-  } satisfies Record<keyof ColorScheme, number>);
+  });
 };
 
 export const createColorSchemes = ({
@@ -127,8 +125,10 @@ export const createColorSchemes = ({
       success,
       error,
       info,
-    } satisfies SourceColors)
-      .filter((entry): entry is [keyof SourceColors, Color] => entry[1] != null)
+    } satisfies Record<keyof SourceColors, Color | undefined>)
+      .filter(
+        (entry): entry is NonNullableEntry<typeof entry> => entry[1] != null
+      )
       .map(([key, value]) => ({
         name: key,
         value: convertColorToArgb(value),
