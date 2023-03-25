@@ -1,6 +1,8 @@
+import type { ValueOf } from "@ayloncarrijo/utilities";
 import type * as Stitches from "@stitches/react";
 import { createStitches, defaultThemeMap } from "@stitches/react";
 import {
+  borderWidths,
   colors,
   fonts,
   fontSizes,
@@ -12,6 +14,7 @@ import {
   shadows,
   sizes,
   space,
+  transitions,
   zIndices,
 } from "./stitches/theme";
 import type { DefaultTypographyToken } from "./types/typography";
@@ -22,7 +25,8 @@ const { light } = createColorSchemes({
   primary: "#7c43ab",
 });
 
-const privateThemeMap: Record<string, string> = {
+const privateThemeMap: Record<string, ValueOf<Stitches.DefaultThemeMap>> = {
+  $$ringWidth: "borderWidths",
   $$ringColor: "colors",
 };
 
@@ -46,6 +50,8 @@ const stitches = createStitches({
     shadows,
     sizes,
     space,
+    transitions,
+    borderWidths,
     fonts,
     fontSizes,
     fontWeights,
@@ -110,17 +116,17 @@ const stitches = createStitches({
       width: value,
       height: value,
     }),
-    ring: (value: number) => ({
+    ring: (value: Stitches.ScaleValue<"borderWidths">) => ({
       boxShadow: "$$ringInset 0 0 0 $$ringWidth $$ringColor",
       $$ringInset: "",
-      $$ringWidth: `${value}px`,
-      $$ringColor: "currentColor",
+      $$ringWidth: value,
+      $$ringColor: "CurrentColor",
     }),
     ringInset: (inset: boolean) => ({
       $$ringInset: inset ? "inset" : "",
     }),
-    ringWidth: (value: number) => ({
-      $$ringWidth: `${value}px`,
+    ringWidth: (value: Stitches.ScaleValue<"borderWidths">) => ({
+      $$ringWidth: value,
     }),
     ringColor: (value: Stitches.PropertyValue<"color">) => ({
       $$ringColor: value,

@@ -5,7 +5,7 @@ export const baseStyles = globalCss({
     boxSizing: "border-box",
     borderWidth: 0,
     borderStyle: "solid",
-    borderColor: "currentColor",
+    borderColor: "CurrentColor",
   },
 
   html: {
