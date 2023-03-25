@@ -1,5 +1,6 @@
 export * from "./components/aspect-ratio";
 export * from "./components/box";
+export * from "./components/button";
 export * from "./components/icon";
 export * from "./components/state-layer";
 export * from "./components/text";

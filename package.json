@@ -22,6 +22,7 @@
     "@ayloncarrijo/typescript-config": "^2.0.3",
     "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-node-resolve": "^15.0.1",
+    "@svgr/rollup": "^7.0.0",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.36.0",

@@ -1,4 +1,4 @@
-import { baseStyles } from "@you-ui/core";
+import { injectBaseStyles } from "@you-ui/core";
 
 /** @type { import('@storybook/react').Preview } */
 
@@ -15,7 +15,7 @@ const preview = {
   decorators: [
     (Story) => (
       <>
-        {baseStyles()}
+        {injectBaseStyles()}
         <Story />
       </>
     ),

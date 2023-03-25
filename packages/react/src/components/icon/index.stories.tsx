@@ -17,11 +17,11 @@ export const Default: StoryObj<IconProps> = {
   argTypes: {
     variant: {
       options: ["outlined", "filled"] satisfies Array<IconProps["variant"]>,
-      control: { type: "radio" },
+      control: { type: "inline-radio" },
     },
     size: {
       options: ["xs", "sm", "md", "lg"] satisfies Array<IconProps["size"]>,
-      control: { type: "radio" },
+      control: { type: "inline-radio" },
     },
   },
 };

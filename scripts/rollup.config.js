@@ -1,5 +1,6 @@
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
+import svgr from "@svgr/rollup";
 import { defineConfig } from "rollup";
 import del from "rollup-plugin-delete";
 import external from "rollup-plugin-peer-deps-external";
@@ -26,6 +27,7 @@ export const createRollupConfig = (
       external({ includeDependencies: true }),
       resolve(),
       commonjs(),
+      svgr(),
       typescript(),
     ],
     ...config,

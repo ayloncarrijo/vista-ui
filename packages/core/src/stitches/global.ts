@@ -1,6 +1,6 @@
 import { globalCss } from "../stitches.config";
 
-export const baseStyles = globalCss({
+export const injectBaseStyles = globalCss({
   "*, ::before, ::after": {
     boxSizing: "border-box",
     borderWidth: 0,
