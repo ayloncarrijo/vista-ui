@@ -15,6 +15,7 @@ export const Default: StoryObj<TextProps> = {
   args: {
     children: "Text",
     typography: "bodyLg",
+    prose: false,
   },
   argTypes: {
     typography: {
