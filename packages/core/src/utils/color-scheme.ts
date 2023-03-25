@@ -66,7 +66,7 @@ const convertArgbToRgba = (color: number, alpha = 1): Rgba => ({
 const convertColorToArgb = (color: Color): number =>
   isString(color) ? argbFromHex(color) : argbFromRgb(color.r, color.g, color.b);
 
-const convertValuesToRgb = <T extends Record<string, number>>(
+const convertValuesToRgb = <T extends Record<keyof T, number>>(
   obj: T
 ): Record<keyof T, string> =>
   createFromEntries(

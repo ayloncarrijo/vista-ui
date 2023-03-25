@@ -1,4 +1,11 @@
+import type { typography } from "../stitches/theme";
 import type { ThemeTokens, TokenValue } from "./stitches";
+
+export interface TypographyMeta<T extends TypographyDefinition> {
+  roles: ReadonlyArray<keyof T>;
+  sizes: ReadonlyArray<TypographySize>;
+  tokens: ReadonlyArray<TypographyToken<T>>;
+}
 
 export type TypographyCssProperty =
   | "fontFamily"
@@ -14,32 +21,28 @@ export type TypographyScale =
   | "letterSpacings"
   | "lineHeights";
 
-export type TypographyRole =
-  | "display"
-  | "headline"
-  | "title"
-  | "body"
-  | "label";
+export type TypographySize = "lg" | "md" | "sm";
 
-export type TypographySize = "sm" | "md" | "lg";
+export type TypographyToken<T extends TypographyDefinition> = `${keyof T &
+  string}${Capitalize<TypographySize>}`;
 
-export type TypographyToken = `${TypographyRole}${Capitalize<TypographySize>}`;
-
-export type TypographyTokens = Record<TypographyToken, TokenValue>;
+export type TypographyScales<
+  T extends TypographyDefinition = TypographyDefinition,
+  Scales extends Partial<Record<TypographyScale, ThemeTokens>> = Partial<
+    Record<TypographyScale, ThemeTokens>
+  >
+> = {
+  [Scale in TypographyScale]: Record<TypographyToken<T>, TokenValue> &
+    Scales[Scale];
+};
 
 export type TypographyStyles = Record<TypographyCssProperty, TokenValue>;
 
-export type TypographyScales<
-  Tokens extends ThemeTokens = ThemeTokens,
-  Scales extends Partial<TypographyScales> = Record<
-    TypographyScale,
-    ThemeTokens
-  >
-> = {
-  [Scale in TypographyScale]: Tokens & Scales[Scale];
-};
-
-export type Typographies = Record<
-  TypographyRole,
+export type TypographyDefinition = Record<
+  string,
   Record<TypographySize, TypographyStyles>
 >;
+
+export type DefaultTypographyToken = (typeof typography)["tokens"][number];
+
+export type DefaultTypographyRole = (typeof typography)["roles"][number];

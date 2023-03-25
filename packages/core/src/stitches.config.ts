@@ -14,7 +14,7 @@ import {
   space,
   zIndices,
 } from "./stitches/theme";
-import type { TypographyToken } from "./types/typography";
+import type { DefaultTypographyToken } from "./types/typography";
 import { createColorSchemes } from "./utils/color-scheme";
 import { createRgbUtilities } from "./utils/stitches";
 
@@ -125,7 +125,7 @@ const stitches = createStitches({
     ringColor: (value: Stitches.PropertyValue<"color">) => ({
       $$ringColor: value,
     }),
-    typography: (value: `$${TypographyToken}`) => ({
+    typography: (value: `$${DefaultTypographyToken}`) => ({
       fontFamily: value,
       fontSize: value,
       fontWeight: value,

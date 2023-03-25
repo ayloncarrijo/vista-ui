@@ -1,4 +1,6 @@
+import { capitalize } from "@ayloncarrijo/utilities";
 import type { Meta, StoryFn, StoryObj } from "@storybook/react";
+import { typography } from "@you-ui/core";
 import { Text, type TextProps } from ".";
 import { Box } from "../box";
 
@@ -9,53 +11,26 @@ const meta: Meta<TextProps> = {
 
 export default meta;
 
+export const Default: StoryObj<TextProps> = {
+  args: {
+    children: "Text",
+    typography: "bodyLg",
+  },
+  argTypes: {
+    typography: {
+      options: typography.tokens,
+      control: { type: "select" },
+    },
+  },
+};
+
 export const Typographies: StoryFn<TextProps> = (props) => (
   <Box css={{ display: "grid", gap: "$8" }}>
-    <Text typography="displayLg" {...props}>
-      Display Large
-    </Text>
-    <Text typography="displayMd" {...props}>
-      Display Medium
-    </Text>
-    <Text typography="displaySm" {...props}>
-      Display Small
-    </Text>
-    <Text typography="headlineLg" {...props}>
-      Headline Large
-    </Text>
-    <Text typography="headlineMd" {...props}>
-      Headline Medium
-    </Text>
-    <Text typography="headlineSm" {...props}>
-      Headline Small
-    </Text>
-    <Text typography="titleLg" {...props}>
-      Title Large
-    </Text>
-    <Text typography="titleMd" {...props}>
-      Title Medium
-    </Text>
-    <Text typography="titleSm" {...props}>
-      Title Small
-    </Text>
-    <Text typography="bodyLg" {...props}>
-      Body Large
-    </Text>
-    <Text typography="bodyMd" {...props}>
-      Body Medium
-    </Text>
-    <Text typography="bodySm" {...props}>
-      Body Small
-    </Text>
-    <Text typography="labelLg" {...props}>
-      Label Large
-    </Text>
-    <Text typography="labelMd" {...props}>
-      Label Medium
-    </Text>
-    <Text typography="labelSm" {...props}>
-      Label Small
-    </Text>
+    {typography.tokens.map((token) => (
+      <Text {...props} key={token} typography={token}>
+        {capitalize(token)}
+      </Text>
+    ))}
   </Box>
 );
 

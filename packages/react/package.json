@@ -24,7 +24,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@ayloncarrijo/utilities": "1.0.0-alpha.7",
+    "@ayloncarrijo/utilities": "1.0.0-alpha.9",
     "@radix-ui/react-aspect-ratio": "^1.0.2"
   },
   "devDependencies": {
@@ -37,7 +37,7 @@
     "@storybook/react": "7.0.0-rc.5",
     "@storybook/react-webpack5": "7.0.0-rc.5",
     "@storybook/testing-library": "0.0.14-next.1",
-    "@types/react": "^18.0.28",
+    "@types/react": "^18.0.29",
     "@types/react-dom": "^18.0.11",
     "@you-ui/core": "workspace:*",
     "prop-types": "15.8.1",

@@ -2,20 +2,22 @@ import {
   capitalize,
   createFromEntries,
   getEntries,
+  getKeys,
 } from "@ayloncarrijo/utilities";
-import type { Css } from "../types/stitches";
+import type { ThemeTokens, TokenValue } from "../types/stitches";
 import type {
-  Typographies,
   TypographyCssProperty,
+  TypographyDefinition,
+  TypographyMeta,
+  TypographyScale,
   TypographyScales,
   TypographyToken,
-  TypographyTokens,
 } from "../types/typography";
 
-const mapTokensToPropertyValue = (
-  typographies: Typographies,
+const mapTokensToPropertyValue = <T extends TypographyDefinition>(
+  typographies: T,
   property: TypographyCssProperty
-): TypographyTokens => {
+): Record<TypographyToken<T>, TokenValue> => {
   return createFromEntries(
     getEntries(typographies).flatMap(([role, sizes]) =>
       getEntries(sizes).map(
@@ -27,38 +29,40 @@ const mapTokensToPropertyValue = (
 };
 
 export const createTypographyScales = <
-  Scales extends Partial<TypographyScales>
+  T extends TypographyDefinition,
+  Scales extends Partial<Record<TypographyScale, ThemeTokens>>
 >(
-  typographies: Typographies,
+  typographies: T,
   scales?: Scales
-): TypographyScales<TypographyTokens, Scales> => {
-  return createFromEntries(
-    getEntries({
-      fonts: "fontFamily",
-      fontSizes: "fontSize",
-      fontWeights: "fontWeight",
-      letterSpacings: "letterSpacing",
-      lineHeights: "lineHeight",
-    } as const).map(([scale, property]) => [
-      scale,
-      {
-        ...mapTokensToPropertyValue(typographies, property),
-        ...scales?.[scale],
-      },
-    ])
-  );
-};
-
-export const createTypographyVariants = (): Record<TypographyToken, Css> => {
-  const roles = ["display", "headline", "title", "body", "label"] as const;
+): TypographyScales<T, Scales> & { typography: TypographyMeta<T> } => {
+  const roles = getKeys(typographies);
 
   const sizes = ["lg", "md", "sm"] as const;
 
   const tokens = roles.flatMap((role) =>
-    sizes.map((size) => `${role}${capitalize(size)}` as const)
+    sizes.map((size) => `${String(role)}${capitalize(size)}` as const)
   );
 
-  return createFromEntries(
-    tokens.map((token) => [token, { typography: `$${token}` }] as const)
-  );
+  return {
+    typography: {
+      roles,
+      sizes,
+      tokens,
+    },
+    ...createFromEntries(
+      getEntries({
+        fonts: "fontFamily",
+        fontSizes: "fontSize",
+        fontWeights: "fontWeight",
+        letterSpacings: "letterSpacing",
+        lineHeights: "lineHeight",
+      } as const).map(([scale, property]) => [
+        scale,
+        {
+          ...mapTokensToPropertyValue(typographies, property),
+          ...scales?.[scale],
+        },
+      ])
+    ),
+  };
 };
