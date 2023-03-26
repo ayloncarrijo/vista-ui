@@ -1,4 +1,5 @@
 import { injectBaseStyles } from "@you-ui/core";
+import { GlobalProvider } from "../src/providers/global-provider";
 
 /** @type { import('@storybook/react').Preview } */
 
@@ -14,10 +15,10 @@ const preview = {
   },
   decorators: [
     (Story) => (
-      <>
+      <GlobalProvider>
         {injectBaseStyles()}
         <Story />
-      </>
+      </GlobalProvider>
     ),
   ],
 };

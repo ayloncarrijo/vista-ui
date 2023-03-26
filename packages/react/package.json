@@ -25,7 +25,8 @@
   },
   "dependencies": {
     "@ayloncarrijo/utilities": "1.0.0-alpha.11",
-    "@radix-ui/react-aspect-ratio": "^1.0.2"
+    "@radix-ui/react-aspect-ratio": "^1.0.2",
+    "@radix-ui/react-tooltip": "^1.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.21.3",

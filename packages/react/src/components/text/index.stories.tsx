@@ -25,6 +25,14 @@ export const Default: StoryObj<TextProps> = {
   },
 };
 
+export const Prose: StoryObj<TextProps> = {
+  args: {
+    children:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero consectetur earum fugit vitae explicabo quis quo possimus nisi nostrum atque omnis pariatur, nemo dolor perferendis accusamus ratione excepturi cumque perspiciatis.",
+    prose: true,
+  },
+};
+
 export const Typographies: StoryFn<TextProps> = (props) => (
   <Box css={{ display: "grid", gap: "$8" }}>
     {typography.tokens.map((token) => (
@@ -37,12 +45,4 @@ export const Typographies: StoryFn<TextProps> = (props) => (
 
 Typographies.parameters = {
   controls: { hideNoControlsWarning: true },
-};
-
-export const Prose: StoryObj<TextProps> = {
-  args: {
-    children:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero consectetur earum fugit vitae explicabo quis quo possimus nisi nostrum atque omnis pariatur, nemo dolor perferendis accusamus ratione excepturi cumque perspiciatis.",
-    prose: true,
-  },
 };
