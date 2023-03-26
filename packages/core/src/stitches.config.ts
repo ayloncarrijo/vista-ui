@@ -33,6 +33,7 @@ const privateThemeMap: Record<string, ValueOf<Stitches.DefaultThemeMap>> = {
 const themeMap = {
   ...defaultThemeMap,
   ...privateThemeMap,
+  animation: "transitions",
   opacity: "opacities",
 } as const;
 

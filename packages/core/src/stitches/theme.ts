@@ -8,6 +8,7 @@ export const zIndices = {
   30: 30,
   40: 40,
   50: 50,
+  tooltip: 1000,
 };
 
 export const colors = {
@@ -94,7 +95,8 @@ export const sizes = {
 export const space = sizes;
 
 export const transitions = {
-  all: "all 150ms cubic-bezier(0.4, 0, 0.2, 1)",
+  easeIn: "150ms ease-in",
+  easeOut: "150ms ease-out",
 };
 
 export const borderWidths = {

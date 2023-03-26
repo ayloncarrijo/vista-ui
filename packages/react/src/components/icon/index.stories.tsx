@@ -4,11 +4,6 @@ import { Icon, type IconProps } from ".";
 const meta: Meta<IconProps> = {
   title: "Components/Icon",
   component: Icon,
-};
-
-export default meta;
-
-export const Default: StoryObj<IconProps> = {
   args: {
     children: "favorite",
     variant: "outlined",
@@ -25,3 +20,7 @@ export const Default: StoryObj<IconProps> = {
     },
   },
 };
+
+export default meta;
+
+export const Default: StoryObj<IconProps> = {};

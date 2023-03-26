@@ -29,7 +29,7 @@ export default meta;
 
 export const Default: StoryObj<TooltipProps> = {
   args: {
-    content: "Add to cart",
+    content: "Add to favorites",
   },
 };
 

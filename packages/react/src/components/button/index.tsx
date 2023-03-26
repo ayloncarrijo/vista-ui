@@ -6,6 +6,8 @@ import { Box } from "../box";
 import { Icon } from "../icon";
 import { StateLayer, stateLayerHook } from "../state-layer";
 
+export type ButtonProps = PolymorphicComponentProps<typeof Button>;
+
 export interface RootButtonProps {
   variant?: "elevated" | "filled" | "tonal" | "outlined" | "text";
   startIcon?: string;
@@ -14,21 +16,19 @@ export interface RootButtonProps {
   loading?: boolean;
 }
 
-export type ButtonProps = PolymorphicComponentProps<typeof Button>;
-
-const Container = styled("button", stateLayerHook, {
+const StyledButton = styled("button", stateLayerHook, {
+  minWidth: "$48",
+  height: "$40",
+  px: "$24",
   position: "relative",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   userSelect: "none",
-  typography: "$labelLg",
   borderRadius: "$full",
-  transition: "$all",
-  transitionProperty: "box-shadow",
-  minWidth: "$48",
-  height: "$40",
-  px: "$24",
+  transition: "box-shadow $easeOut",
+  typography: "$labelLg",
+  lineHeight: "normal",
   variants: {
     variant: {
       elevated: {
@@ -103,7 +103,7 @@ export const Button = forwardRef<RootButtonProps, "button">(
     },
     ref
   ) => (
-    <Container
+    <StyledButton
       ref={ref}
       variant={variant}
       disabled={loading || disabled}
@@ -145,6 +145,6 @@ export const Button = forwardRef<RootButtonProps, "button">(
       )}
 
       <StateLayer />
-    </Container>
+    </StyledButton>
   )
 );

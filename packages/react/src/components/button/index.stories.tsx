@@ -8,19 +8,6 @@ const meta: Meta<ButtonProps> = {
   args: {
     children: "Button",
   },
-};
-
-export default meta;
-
-export const Default: StoryObj<ButtonProps> = {
-  args: {
-    variant: "filled",
-    startIcon: "favorite",
-    endIcon: "",
-    fullWidth: false,
-    loading: false,
-    disabled: false,
-  },
   argTypes: {
     variant: {
       options: [
@@ -35,8 +22,10 @@ export const Default: StoryObj<ButtonProps> = {
   },
 };
 
+export default meta;
+
 const Template: StoryFn<ButtonProps> = (props) => (
-  <Box css={{ display: "flex", gap: "$8" }}>
+  <Box css={{ display: "flex", flexWrap: "wrap", gap: "$8" }}>
     <Button {...props} />
     <Button {...props} startIcon="favorite" />
     <Button {...props} endIcon="favorite" />
@@ -47,11 +36,32 @@ const Template: StoryFn<ButtonProps> = (props) => (
   </Box>
 );
 
+Template.argTypes = {
+  variant: {
+    table: {
+      disable: true,
+    },
+  },
+};
+
+export const Default: StoryObj<ButtonProps> = {
+  args: {
+    variant: "filled",
+    startIcon: "favorite",
+    endIcon: "",
+    fullWidth: false,
+    loading: false,
+    disabled: false,
+  },
+};
+
 export const Elevated = Template.bind({});
 
 Elevated.args = {
   variant: "elevated",
 };
+
+Elevated.argTypes = Template.argTypes;
 
 export const Filled = Template.bind({});
 
@@ -59,11 +69,15 @@ Filled.args = {
   variant: "filled",
 };
 
+Filled.argTypes = Template.argTypes;
+
 export const Tonal = Template.bind({});
 
 Tonal.args = {
   variant: "tonal",
 };
+
+Tonal.argTypes = Template.argTypes;
 
 export const Outlined = Template.bind({});
 
@@ -71,8 +85,12 @@ Outlined.args = {
   variant: "outlined",
 };
 
+Outlined.argTypes = Template.argTypes;
+
 export const Text = Template.bind({});
 
 Text.args = {
   variant: "text",
 };
+
+Text.argTypes = Template.argTypes;

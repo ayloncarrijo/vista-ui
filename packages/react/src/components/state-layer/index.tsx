@@ -8,8 +8,7 @@ export const StateLayer = styled("div", {
   pointerEvents: "none",
   borderRadius: "inherit",
   backgroundColor: "CurrentColor",
-  transition: "$all",
-  transitionProperty: "opacity",
+  transition: "opacity $easeOut",
   opacity: 0,
 });
 

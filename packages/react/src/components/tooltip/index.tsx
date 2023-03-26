@@ -1,28 +1,33 @@
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 import { fadeIn, fadeOut, styled } from "@you-ui/core";
+import type { PolymorphicComponentProps } from "../../types/forward-ref";
 import { forwardRef } from "../../utils/forward-ref";
 
-export interface TooltipProps extends TooltipPrimitive.TooltipProps {
+export type TooltipProps = PolymorphicComponentProps<typeof Tooltip>;
+
+export interface RootTooltipProps extends TooltipPrimitive.TooltipProps {
   content: React.ReactNode;
 }
 
-const TooltipContent = styled(TooltipPrimitive.Content, {
-  background: "$inverseSurface",
-  color: "$inverseOnSurface",
+const StyledTooltipContent = styled(TooltipPrimitive.Content, {
+  zIndex: "$tooltip",
+  position: "relative",
   typography: "$bodySm",
   borderRadius: "$sm",
   maxWidth: "$256",
   py: "$8",
   px: "$12",
+  backgroundColor: "$inverseSurface",
+  color: "$inverseOnSurface",
   "&[data-state='delayed-open']": {
-    animation: `${fadeIn.name} 150ms ease-out`,
+    animation: `${fadeIn.name} $easeOut`,
   },
   "&[data-state='closed']": {
-    animation: `${fadeOut.name} 150ms ease-in`,
+    animation: `${fadeOut.name} $easeIn`,
   },
 });
 
-export const Tooltip = forwardRef<TooltipProps, "div">(
+export const Tooltip = forwardRef<RootTooltipProps, "div">(
   (
     {
       content,
@@ -44,9 +49,9 @@ export const Tooltip = forwardRef<TooltipProps, "div">(
       disableHoverableContent={disableHoverableContent}
     >
       <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>
-      <TooltipContent ref={ref} sideOffset={8} {...props}>
+      <StyledTooltipContent ref={ref} sideOffset={8} {...props}>
         {content}
-      </TooltipContent>
+      </StyledTooltipContent>
     </TooltipPrimitive.Root>
   )
 );
