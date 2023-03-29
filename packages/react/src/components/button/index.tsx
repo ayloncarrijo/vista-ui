@@ -8,13 +8,13 @@ import { StateLayer, stateLayerHook } from "../state-layer";
 
 export type ButtonProps = PolymorphicComponentProps<typeof Button>;
 
-export interface RootButtonProps {
+export type RootButtonProps = {
   variant?: "elevated" | "filled" | "tonal" | "outlined" | "text";
   startIcon?: string;
   endIcon?: string;
   fullWidth?: boolean;
   loading?: boolean;
-}
+};
 
 const StyledButton = styled("button", stateLayerHook, {
   minWidth: "$48",
@@ -119,18 +119,18 @@ export const Button = forwardRef<RootButtonProps, "button">(
       >
         {Boolean(startIcon) && (
           <Icon
-            size="xs"
+            size="sm"
             css={{ ml: variant === "text" ? 0 : "-$8", mr: "$8" }}
           >
             {startIcon}
           </Icon>
         )}
 
-        {children}
+        <span>{children}</span>
 
         {Boolean(endIcon) && (
           <Icon
-            size="xs"
+            size="sm"
             css={{ mr: variant === "text" ? 0 : "-$8", ml: "$8" }}
           >
             {endIcon}

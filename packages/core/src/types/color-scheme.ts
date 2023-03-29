@@ -1,16 +1,16 @@
 import type * as Material from "@importantimport/material-color-utilities";
 
-export interface Rgb {
+export type Hexadecimal = `#${string}`;
+
+export type Rgb = {
   r: number;
   g: number;
   b: number;
-}
+};
 
-export interface Rgba extends Rgb {
+export type Rgba = Rgb & {
   a: number;
-}
-
-export type Hexadecimal = `#${string}`;
+};
 
 export type Color = Hexadecimal | Rgb;
 
@@ -50,7 +50,7 @@ export type ColorSchemes = Record<SchemeType, ColorScheme>;
 export type CustomColors = ColorGroup<HelperColor, number> &
   Partial<ColorGroup<"secondary" | "tertiary", number>>;
 
-export interface SourceColors {
+export type SourceColors = {
   primary: Color;
   secondary?: Color;
   tertiary?: Color;
@@ -58,4 +58,4 @@ export interface SourceColors {
   success?: Color;
   error?: Color;
   info?: Color;
-}
+};

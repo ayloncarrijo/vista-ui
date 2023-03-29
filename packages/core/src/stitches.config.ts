@@ -17,7 +17,7 @@ import {
   transitions,
   zIndices,
 } from "./stitches/theme";
-import type { DefaultTypographyToken } from "./types/typography";
+import type { TypographyMetaToken } from "./types/typography";
 import { createColorSchemes } from "./utils/color-scheme";
 import { createRgbUtilities } from "./utils/stitches";
 
@@ -35,6 +35,7 @@ const themeMap = {
   ...privateThemeMap,
   animation: "transitions",
   opacity: "opacities",
+  translate: "space",
 } as const;
 
 const stitches = createStitches({
@@ -132,7 +133,7 @@ const stitches = createStitches({
     ringColor: (value: Stitches.PropertyValue<"color">) => ({
       $$ringColor: value,
     }),
-    typography: (value: `$${DefaultTypographyToken}`) => ({
+    typography: (value: `$${TypographyMetaToken}`) => ({
       fontFamily: value,
       fontSize: value,
       fontWeight: value,

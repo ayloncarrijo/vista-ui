@@ -4,44 +4,49 @@ import { styled } from "@you-ui/core";
 export type IconProps = React.ComponentProps<typeof Icon>;
 
 export const Icon = styled("span", {
-  fontFamily: "$icons",
-  fontWeight: "normal",
-  fontStyle: "normal",
+  whiteSpace: "nowrap",
+  wordWrap: "normal",
+  direction: "ltr",
   lineHeight: 1,
   letterSpacing: "normal",
   textTransform: "none",
   display: "inline-block",
-  whiteSpace: "nowrap",
-  wordWrap: "normal",
-  direction: "ltr",
+  fontFamily: "$icons",
+  fontWeight: "normal",
+  fontStyle: "normal",
+  fontVariationSettings:
+    "'FILL' $$fontVarFill, 'wght' 400, 'GRAD' 0, 'opsz' 24",
   WebkitFontFeatureSettings: "'liga'",
   WebkitFontSmoothing: "antialiased",
   variants: {
     variant: {
       filled: {
-        fontVariationSettings: "'FILL' 1",
+        $$fontVarFill: "1",
       },
       outlined: {
-        fontVariationSettings: "'FILL' 0",
+        $$fontVarFill: "0",
       },
     },
     size: {
       xs: {
-        fontSize: convertPxToRem(18),
+        fontSize: convertPxToRem(16),
       },
       sm: {
-        fontSize: convertPxToRem(24),
+        fontSize: convertPxToRem(18),
       },
       md: {
-        fontSize: convertPxToRem(36),
+        fontSize: convertPxToRem(24),
       },
       lg: {
+        fontSize: convertPxToRem(36),
+      },
+      xl: {
         fontSize: convertPxToRem(48),
       },
     },
   },
   defaultVariants: {
     variant: "outlined",
-    size: "sm",
+    size: "md",
   },
 });

@@ -1,11 +1,11 @@
 import type { typography } from "../stitches/theme";
 import type { ThemeTokens, TokenValue } from "./stitches";
 
-export interface TypographyMeta<T extends TypographyDefinition> {
+export type TypographyMeta<T extends TypographyDefinition> = {
   roles: ReadonlyArray<keyof T>;
   sizes: ReadonlyArray<TypographySize>;
   tokens: ReadonlyArray<TypographyToken<T>>;
-}
+};
 
 export type TypographyCssProperty =
   | "fontFamily"
@@ -43,6 +43,6 @@ export type TypographyDefinition = Record<
   Record<TypographySize, TypographyStyles>
 >;
 
-export type DefaultTypographyToken = (typeof typography)["tokens"][number];
+export type TypographyMetaToken = (typeof typography)["tokens"][number];
 
-export type DefaultTypographyRole = (typeof typography)["roles"][number];
+export type TypographyMetaRole = (typeof typography)["roles"][number];

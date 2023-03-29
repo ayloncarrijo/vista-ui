@@ -12,8 +12,8 @@ export const zIndices = {
 };
 
 export const colors = {
-  disabledContainer: "$onSurface/0.12",
-  disabledContent: "$onSurface/0.38",
+  disabledContainer: "$onSurface/$opacities$disabledContainer",
+  disabledContent: "$onSurface/$opacities$disabledContent",
 };
 
 export const opacities = {
@@ -21,6 +21,8 @@ export const opacities = {
   focus: 0.12,
   pressed: 0.12,
   dragged: 0.16,
+  disabledContainer: 0.12,
+  disabledContent: 0.38,
 };
 
 export const radii = {
@@ -58,8 +60,8 @@ export const shadows = {
 };
 
 export const sizes = {
-  px: "1px",
   prose: "65ch",
+  px: "1px",
   4: convertPxToRem(4),
   8: convertPxToRem(8),
   12: convertPxToRem(12),
@@ -72,6 +74,9 @@ export const sizes = {
   40: convertPxToRem(40),
   44: convertPxToRem(44),
   48: convertPxToRem(48),
+  52: convertPxToRem(52),
+  56: convertPxToRem(56),
+  60: convertPxToRem(60),
   64: convertPxToRem(64),
   80: convertPxToRem(80),
   96: convertPxToRem(96),

@@ -7,12 +7,12 @@ import { Tooltip } from "../tooltip";
 
 export type IconButtonProps = PolymorphicComponentProps<typeof IconButton>;
 
-export interface RootIconButtonProps {
+export type RootIconButtonProps = {
   icon: string;
   label: string;
   variant?: "filled" | "tonal" | "outlined" | "standard";
   toggle?: "no-toggle" | "unselected" | "selected";
-}
+};
 
 const TOGGLE_DEFAULTS = {
   filled: "selected",

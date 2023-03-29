@@ -7,7 +7,7 @@ const meta: Meta<IconProps> = {
   args: {
     children: "favorite",
     variant: "outlined",
-    size: "sm",
+    size: "md",
   },
   argTypes: {
     variant: {
@@ -15,7 +15,9 @@ const meta: Meta<IconProps> = {
       control: { type: "inline-radio" },
     },
     size: {
-      options: ["xs", "sm", "md", "lg"] satisfies Array<IconProps["size"]>,
+      options: ["xs", "sm", "md", "lg", "xl"] satisfies Array<
+        IconProps["size"]
+      >,
       control: { type: "inline-radio" },
     },
   },

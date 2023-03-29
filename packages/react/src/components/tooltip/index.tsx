@@ -5,11 +5,11 @@ import { forwardRef } from "../../utils/forward-ref";
 
 export type TooltipProps = PolymorphicComponentProps<typeof Tooltip>;
 
-export interface RootTooltipProps extends TooltipPrimitive.TooltipProps {
+export type RootTooltipProps = TooltipPrimitive.TooltipProps & {
   content: React.ReactNode;
-}
+};
 
-const StyledTooltipContent = styled(TooltipPrimitive.Content, {
+const StyledContent = styled(TooltipPrimitive.Content, {
   zIndex: "$tooltip",
   position: "relative",
   typography: "$bodySm",
@@ -49,9 +49,9 @@ export const Tooltip = forwardRef<RootTooltipProps, "div">(
       disableHoverableContent={disableHoverableContent}
     >
       <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>
-      <StyledTooltipContent ref={ref} sideOffset={8} {...props}>
+      <StyledContent ref={ref} sideOffset={8} {...props}>
         {content}
-      </StyledTooltipContent>
+      </StyledContent>
     </TooltipPrimitive.Root>
   )
 );

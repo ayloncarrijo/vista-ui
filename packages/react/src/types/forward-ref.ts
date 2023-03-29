@@ -4,10 +4,10 @@ import type { Css } from "@you-ui/core";
 // TODO: Review performance of generic constraints
 // https://github.com/microsoft/TypeScript/issues/53035
 
-export interface StitchesProps<As> {
+export type StitchesProps<As> = {
   as?: As;
   css?: Css;
-}
+};
 
 export type PropsWithAs<Props, As> = As extends React.ElementType
   ? LeftJoin<Props, React.ComponentPropsWithoutRef<As>> & StitchesProps<As>
