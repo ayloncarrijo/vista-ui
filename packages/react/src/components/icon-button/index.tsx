@@ -1,13 +1,14 @@
 import { styled } from "@you-ui/core";
+import { iconButtonShape, stateLayerHook } from "../../css";
 import type { PolymorphicComponentProps } from "../../types/forward-ref";
 import { forwardRef } from "../../utils/forward-ref";
 import { Icon } from "../icon";
-import { StateLayer, stateLayerHook } from "../state-layer";
+import { StateLayer } from "../state-layer";
 import { Tooltip } from "../tooltip";
 
 export type IconButtonProps = PolymorphicComponentProps<typeof IconButton>;
 
-export type RootIconButtonProps = {
+export type IconButtonRootProps = {
   icon: string;
   label: string;
   variant?: "filled" | "tonal" | "outlined" | "standard";
@@ -21,20 +22,7 @@ const TOGGLE_DEFAULTS = {
   standard: "unselected",
 } as const;
 
-const StyledButton = styled("button", stateLayerHook, {
-  width: "$40",
-  height: "$40",
-  position: "relative",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  userSelect: "none",
-  borderRadius: "$full",
-  "&::before": {
-    content: "",
-    position: "absolute",
-    inset: "-$4",
-  },
+const StyledRoot = styled("button", iconButtonShape, stateLayerHook, {
   variants: {
     variant: {
       filled: {
@@ -137,13 +125,13 @@ const StyledButton = styled("button", stateLayerHook, {
   ],
 });
 
-export const IconButton = forwardRef<RootIconButtonProps, "button">(
+export const IconButton = forwardRef<IconButtonRootProps, "button">(
   (
     { icon, label, variant = "standard", toggle = "no-toggle", ...props },
     ref
   ) => (
     <Tooltip content={label}>
-      <StyledButton
+      <StyledRoot
         ref={ref}
         variant={variant}
         toggle={toggle === "no-toggle" ? TOGGLE_DEFAULTS[variant] : toggle}
@@ -154,7 +142,7 @@ export const IconButton = forwardRef<RootIconButtonProps, "button">(
           {icon}
         </Icon>
         <StateLayer />
-      </StyledButton>
+      </StyledRoot>
     </Tooltip>
   )
 );

@@ -1,4 +1,4 @@
-import { styled, type Css } from "@you-ui/core";
+import { styled } from "@you-ui/core";
 
 export type StateLayerProps = React.ComponentProps<typeof StateLayer>;
 
@@ -11,15 +11,3 @@ export const StateLayer = styled("div", {
   transition: "opacity $easeOut",
   opacity: 0,
 });
-
-export const stateLayerHook: Css = {
-  [`&:hover ${StateLayer.selector}`]: {
-    opacity: "$hover",
-  },
-  [`&:active ${StateLayer.selector}`]: {
-    opacity: "$pressed",
-  },
-  [`&:focus-visible ${StateLayer.selector}`]: {
-    opacity: "$focus",
-  },
-};

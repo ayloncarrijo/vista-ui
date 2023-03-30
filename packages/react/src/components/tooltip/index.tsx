@@ -5,7 +5,7 @@ import { forwardRef } from "../../utils/forward-ref";
 
 export type TooltipProps = PolymorphicComponentProps<typeof Tooltip>;
 
-export type RootTooltipProps = TooltipPrimitive.TooltipProps & {
+export type TooltipRootProps = TooltipPrimitive.TooltipProps & {
   content: React.ReactNode;
 };
 
@@ -27,7 +27,7 @@ const StyledContent = styled(TooltipPrimitive.Content, {
   },
 });
 
-export const Tooltip = forwardRef<RootTooltipProps, "div">(
+export const Tooltip = forwardRef<TooltipRootProps, "div">(
   (
     {
       content,

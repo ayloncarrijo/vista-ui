@@ -1,14 +1,15 @@
 import { styled } from "@you-ui/core";
 import Spinner from "../../assets/icons/spinner.svg";
+import { stateLayerHook } from "../../css";
 import type { PolymorphicComponentProps } from "../../types/forward-ref";
 import { forwardRef } from "../../utils/forward-ref";
 import { Box } from "../box";
 import { Icon } from "../icon";
-import { StateLayer, stateLayerHook } from "../state-layer";
+import { StateLayer } from "../state-layer";
 
 export type ButtonProps = PolymorphicComponentProps<typeof Button>;
 
-export type RootButtonProps = {
+export type ButtonRootProps = {
   variant?: "elevated" | "filled" | "tonal" | "outlined" | "text";
   startIcon?: string;
   endIcon?: string;
@@ -16,19 +17,19 @@ export type RootButtonProps = {
   loading?: boolean;
 };
 
-const StyledButton = styled("button", stateLayerHook, {
+const StyledRoot = styled("button", stateLayerHook, {
   minWidth: "$48",
   height: "$40",
   px: "$24",
   position: "relative",
   display: "flex",
-  justifyContent: "center",
   alignItems: "center",
-  userSelect: "none",
+  justifyContent: "center",
   borderRadius: "$full",
   transition: "box-shadow $easeOut",
   typography: "$labelLg",
   lineHeight: "normal",
+  userSelect: "none",
   variants: {
     variant: {
       elevated: {
@@ -90,7 +91,7 @@ const StyledButton = styled("button", stateLayerHook, {
   },
 });
 
-export const Button = forwardRef<RootButtonProps, "button">(
+export const Button = forwardRef<ButtonRootProps, "button">(
   (
     {
       variant = "filled",
@@ -103,7 +104,7 @@ export const Button = forwardRef<RootButtonProps, "button">(
     },
     ref
   ) => (
-    <StyledButton
+    <StyledRoot
       ref={ref}
       variant={variant}
       disabled={loading || disabled}
@@ -112,8 +113,8 @@ export const Button = forwardRef<RootButtonProps, "button">(
       <Box
         css={{
           display: "flex",
-          justifyContent: "center",
           alignItems: "center",
+          justifyContent: "center",
           opacity: loading ? 0 : 1,
         }}
       >
@@ -145,6 +146,6 @@ export const Button = forwardRef<RootButtonProps, "button">(
       )}
 
       <StateLayer />
-    </StyledButton>
+    </StyledRoot>
   )
 );

@@ -26,6 +26,7 @@
   "dependencies": {
     "@ayloncarrijo/utilities": "1.0.0-alpha.12",
     "@radix-ui/react-aspect-ratio": "^1.0.2",
+    "@radix-ui/react-checkbox": "^1.0.3",
     "@radix-ui/react-switch": "^1.0.2",
     "@radix-ui/react-tooltip": "^1.0.5"
   },
@@ -40,7 +41,7 @@
     "@storybook/react-webpack5": "7.0.0-rc.5",
     "@storybook/testing-library": "0.0.14-next.1",
     "@svgr/webpack": "^7.0.0",
-    "@types/react": "^18.0.30",
+    "@types/react": "^18.0.31",
     "@types/react-dom": "^18.0.11",
     "@you-ui/core": "workspace:*",
     "prop-types": "15.8.1",

@@ -29,6 +29,10 @@ const config = {
   docs: {
     autodocs: "tag",
   },
+  reactOptions: {
+    fastRefresh: true,
+    strictMode: true,
+  },
   typescript: {
     reactDocgen: false,
   },

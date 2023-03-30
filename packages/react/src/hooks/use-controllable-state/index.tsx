@@ -1,6 +1,6 @@
 import { isFunction } from "@ayloncarrijo/utilities";
 import React from "react";
-import { useUpdatableRef } from "../use-updatable-ref";
+import { useLatestRef } from "../use-latest-ref";
 
 type UseControllableStateParams<T> = {
   initialState: T | (() => T);
@@ -12,13 +12,13 @@ type UseControllableStateParams<T> = {
 export const useControllableState = <T,>(
   params: UseControllableStateParams<T>
 ): [T, React.Dispatch<React.SetStateAction<T>>] => {
-  const { initialState, propValue, defaultPropValue } = params;
+  const { initialState, propValue, defaultPropValue = initialState } = params;
 
-  const paramsRef = useUpdatableRef(params);
+  const paramsRef = useLatestRef(params);
 
-  const [internalValue, setInternalValue] = React.useState(
-    defaultPropValue !== undefined ? defaultPropValue : initialState
-  );
+  const [internalValue, setInternalValue] = React.useState(defaultPropValue);
+
+  const prevInternalValue = React.useRef(internalValue);
 
   const isControlled = propValue !== undefined;
 
@@ -32,7 +32,10 @@ export const useControllableState = <T,>(
 
       if (isControlled) {
         const newValue = isFunction(state) ? state(propValue) : state;
-        onChange?.(newValue);
+
+        if (newValue !== propValue) {
+          onChange?.(newValue);
+        }
       } else {
         setInternalValue(state);
       }
@@ -41,14 +44,12 @@ export const useControllableState = <T,>(
   );
 
   React.useEffect(() => {
-    const { onChange, propValue } = paramsRef.current;
-
-    const isControlled = propValue !== undefined;
-
-    if (!isControlled) {
+    if (internalValue !== prevInternalValue.current) {
+      const { onChange } = paramsRef.current;
       onChange?.(internalValue);
+      prevInternalValue.current = internalValue;
     }
-  }, [internalValue, paramsRef]);
+  }, [paramsRef, internalValue]);
 
   return [value, setValue];
 };

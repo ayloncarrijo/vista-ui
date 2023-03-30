@@ -1,5 +1,6 @@
 import type { Meta, StoryFn } from "@storybook/react";
-import { StateLayer, stateLayerHook } from ".";
+import { StateLayer } from ".";
+import { stateLayerHook } from "../../css";
 import { Box } from "../box";
 
 const meta: Meta = {
@@ -17,8 +18,8 @@ export const Default: StoryFn = () => (
       p: "$16",
       position: "relative",
       display: "flex",
-      justifyContent: "center",
       alignItems: "center",
+      justifyContent: "center",
       typography: "$labelLg",
       borderRadius: "$lg",
       borderWidth: "$1",
