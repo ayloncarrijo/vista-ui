@@ -36,35 +36,32 @@ const StyledRoot = styled(
     "&[data-state='unchecked']": {
       [String(StyledContainer)]: {
         borderWidth: "$2",
+        borderColor: "CurrentColor",
       },
       "&:enabled[data-error='false']": {
-        color: "$onSurface",
-        [String(StyledContainer)]: {
-          borderColor: "$onSurface",
-        },
+        color: "$onSurfaceVariant",
       },
       "&:enabled[data-error='true']": {
         color: "$error",
-        [String(StyledContainer)]: {
-          borderColor: "$error",
-        },
       },
       "&:disabled": {
-        [String(StyledContainer)]: {
-          borderColor: "$disabledContent",
-        },
+        color: "$disabledContent",
       },
     },
     "&[data-state='checked'], &[data-state='indeterminate']": {
       "&:enabled[data-error='false']": {
-        color: "$primary",
+        [String(StateLayer)]: {
+          color: "$primary",
+        },
         [String(StyledContainer)]: {
           backgroundColor: "$primary",
           color: "$onPrimary",
         },
       },
       "&:enabled[data-error='true']": {
-        color: "$error",
+        [String(StateLayer)]: {
+          color: "$error",
+        },
         [String(StyledContainer)]: {
           backgroundColor: "$error",
           color: "$onError",

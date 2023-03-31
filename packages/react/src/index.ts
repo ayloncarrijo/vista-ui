@@ -4,6 +4,8 @@ export * from "./components/button";
 export * from "./components/checkbox";
 export * from "./components/icon";
 export * from "./components/icon-button";
+export * from "./components/radio";
+export * from "./components/radio-group";
 export * from "./components/state-layer";
 export * from "./components/switch";
 export * from "./components/text";

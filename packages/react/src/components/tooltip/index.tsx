@@ -20,10 +20,10 @@ const StyledContent = styled(TooltipPrimitive.Content, {
   backgroundColor: "$inverseSurface",
   color: "$inverseOnSurface",
   "&[data-state='delayed-open']": {
-    animation: `${fadeIn.name} $easeOut`,
+    animation: `${String(fadeIn)} $easeOut`,
   },
   "&[data-state='closed']": {
-    animation: `${fadeOut.name} $easeIn`,
+    animation: `${String(fadeOut)} $easeIn`,
   },
 });
 
