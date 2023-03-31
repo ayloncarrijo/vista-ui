@@ -5,7 +5,7 @@ export const iconButtonShape: Css = {
   width: "$40",
   height: "$40",
   position: "relative",
-  display: "flex",
+  display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",
   borderRadius: "$full",

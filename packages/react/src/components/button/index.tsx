@@ -22,7 +22,7 @@ const StyledRoot = styled("button", stateLayerHook, {
   height: "$40",
   px: "$24",
   position: "relative",
-  display: "flex",
+  display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",
   borderRadius: "$full",

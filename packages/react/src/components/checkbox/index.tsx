@@ -4,13 +4,15 @@ import { iconButtonShape, stateLayerHook } from "../../css";
 import { useControllableState } from "../../hooks/use-controllable-state";
 import type { PolymorphicComponentProps } from "../../types/forward-ref";
 import { forwardRef } from "../../utils/forward-ref";
+import { FormLabel } from "../form-label";
 import { Icon } from "../icon";
 import { StateLayer } from "../state-layer";
 
 export type CheckboxProps = PolymorphicComponentProps<typeof Checkbox>;
 
 export type CheckboxRootProps = CheckboxPrimitive.CheckboxProps & {
-  error: boolean;
+  label?: string;
+  error?: boolean;
 };
 
 const StyledContainer = styled("div", {
@@ -38,33 +40,37 @@ const StyledRoot = styled(
         borderWidth: "$2",
         borderColor: "CurrentColor",
       },
-      "&:enabled[data-error='false']": {
-        color: "$onSurfaceVariant",
-      },
-      "&:enabled[data-error='true']": {
-        color: "$error",
+      "&:enabled": {
+        "&[data-error='false']": {
+          color: "$onSurfaceVariant",
+        },
+        "&[data-error='true']": {
+          color: "$error",
+        },
       },
       "&:disabled": {
         color: "$disabledContent",
       },
     },
     "&[data-state='checked'], &[data-state='indeterminate']": {
-      "&:enabled[data-error='false']": {
-        [String(StateLayer)]: {
-          color: "$primary",
+      "&:enabled": {
+        "&[data-error='false']": {
+          [String(StateLayer)]: {
+            color: "$primary",
+          },
+          [String(StyledContainer)]: {
+            backgroundColor: "$primary",
+            color: "$onPrimary",
+          },
         },
-        [String(StyledContainer)]: {
-          backgroundColor: "$primary",
-          color: "$onPrimary",
-        },
-      },
-      "&:enabled[data-error='true']": {
-        [String(StateLayer)]: {
-          color: "$error",
-        },
-        [String(StyledContainer)]: {
-          backgroundColor: "$error",
-          color: "$onError",
+        "&[data-error='true']": {
+          [String(StateLayer)]: {
+            color: "$error",
+          },
+          [String(StyledContainer)]: {
+            backgroundColor: "$error",
+            color: "$onError",
+          },
         },
       },
       "&:disabled": {
@@ -78,7 +84,18 @@ const StyledRoot = styled(
 );
 
 export const Checkbox = forwardRef<CheckboxRootProps, "button">(
-  ({ error, checked, defaultChecked, onCheckedChange, ...props }, ref) => {
+  (
+    {
+      label,
+      disabled,
+      error,
+      checked,
+      defaultChecked,
+      onCheckedChange,
+      ...props
+    },
+    ref
+  ) => {
     const [isChecked, setIsChecked] = useControllableState({
       initialState: false,
       propValue: checked,
@@ -86,12 +103,13 @@ export const Checkbox = forwardRef<CheckboxRootProps, "button">(
       onChange: onCheckedChange,
     });
 
-    return (
+    const content = (
       <StyledRoot
         ref={ref}
-        data-error={error}
         checked={isChecked}
         onCheckedChange={setIsChecked}
+        disabled={disabled}
+        data-error={error}
         {...props}
       >
         <StyledContainer>
@@ -103,6 +121,20 @@ export const Checkbox = forwardRef<CheckboxRootProps, "button">(
         </StyledContainer>
         <StateLayer />
       </StyledRoot>
+    );
+
+    return label != null ? (
+      <FormLabel
+        label={label}
+        side="right"
+        disabled={disabled}
+        error={error}
+        css={{ gap: "$4" }}
+      >
+        {content}
+      </FormLabel>
+    ) : (
+      content
     );
   }
 );

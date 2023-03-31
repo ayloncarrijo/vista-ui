@@ -4,12 +4,15 @@ import { stateLayerHook } from "../../css";
 import { useControllableState } from "../../hooks/use-controllable-state";
 import type { PolymorphicComponentProps } from "../../types/forward-ref";
 import { forwardRef } from "../../utils/forward-ref";
+import { FormLabel } from "../form-label";
 import { Icon } from "../icon";
 import { StateLayer } from "../state-layer";
 
 export type SwitchProps = PolymorphicComponentProps<typeof Switch>;
 
-export type SwitchRootProps = SwitchPrimitive.SwitchProps;
+export type SwitchRootProps = SwitchPrimitive.SwitchProps & {
+  label?: string;
+};
 
 const StyledThumb = styled(SwitchPrimitive.Thumb, {
   width: "$24",
@@ -38,48 +41,23 @@ const StyledRoot = styled(SwitchPrimitive.Root, stateLayerHook, {
   "&[data-state='unchecked']": {
     ring: "$2",
     ringInset: true,
-    ringColor: "$outline",
-    backgroundColor: "$surfaceContainerHighest",
     [String(StyledThumb)]: {
       translate: "$4",
-    },
-    [String(StyledThumbBackground)]: {
-      backgroundColor: "$outline",
-    },
-    [String(Icon)]: {
-      color: "$surfaceContainerHighest",
     },
     [String(StateLayer)]: {
       color: "$onSurface",
     },
-    "&:hover, &:active": {
+    "&:enabled": {
+      ringColor: "$outline",
+      backgroundColor: "$surfaceContainerHighest",
       [String(StyledThumbBackground)]: {
-        backgroundColor: "$onSurfaceVariant",
+        backgroundColor: "$outline",
+      },
+      [String(Icon)]: {
+        color: "$surfaceContainerHighest",
       },
     },
-  },
-  "&[data-state='checked']": {
-    backgroundColor: "$primary",
-    [String(StyledThumb)]: {
-      translate: "$24",
-    },
-    [String(StyledThumbBackground)]: {
-      backgroundColor: "$onPrimary",
-    },
-    [String(Icon)]: {
-      color: "$onPrimaryContainer",
-    },
-    [String(StateLayer)]: {
-      color: "$primary",
-    },
-    "&:hover, &:active": {
-      [String(StyledThumbBackground)]: {
-        backgroundColor: "$primaryContainer",
-      },
-    },
-  },
-  "&:disabled": {
-    "&[data-state='unchecked']": {
+    "&:disabled": {
       ringColor: "$disabledContainer",
       backgroundColor: "$surfaceContainerHighest/$opacities$disabledContainer",
       [String(StyledThumbBackground)]: {
@@ -89,13 +67,40 @@ const StyledRoot = styled(SwitchPrimitive.Root, stateLayerHook, {
         color: "$surfaceContainerHighest/$opacities$disabledContent",
       },
     },
-    "&[data-state='checked']": {
+    "&:hover, &:active": {
+      [String(StyledThumbBackground)]: {
+        backgroundColor: "$onSurfaceVariant",
+      },
+    },
+  },
+  "&[data-state='checked']": {
+    [String(StyledThumb)]: {
+      translate: "$24",
+    },
+    [String(StateLayer)]: {
+      color: "$primary",
+    },
+    "&:enabled": {
+      backgroundColor: "$primary",
+      [String(StyledThumbBackground)]: {
+        backgroundColor: "$onPrimary",
+      },
+      [String(Icon)]: {
+        color: "$onPrimaryContainer",
+      },
+    },
+    "&:disabled": {
       backgroundColor: "$disabledContainer",
       [String(StyledThumbBackground)]: {
         backgroundColor: "$surface",
       },
       [String(Icon)]: {
         color: "$disabledContent",
+      },
+    },
+    "&:hover, &:active": {
+      [String(StyledThumbBackground)]: {
+        backgroundColor: "$primaryContainer",
       },
     },
   },
@@ -105,7 +110,10 @@ const StyledRoot = styled(SwitchPrimitive.Root, stateLayerHook, {
 });
 
 export const Switch = forwardRef<SwitchRootProps, "button">(
-  ({ checked, defaultChecked, onCheckedChange, ...props }, ref) => {
+  (
+    { label, disabled, checked, defaultChecked, onCheckedChange, ...props },
+    ref
+  ) => {
     const [isChecked, setIsChecked] = useControllableState({
       initialState: false,
       propValue: checked,
@@ -113,11 +121,12 @@ export const Switch = forwardRef<SwitchRootProps, "button">(
       onChange: onCheckedChange,
     });
 
-    return (
+    const content = (
       <StyledRoot
         ref={ref}
         checked={isChecked}
         onCheckedChange={setIsChecked}
+        disabled={disabled}
         {...props}
       >
         <StyledThumb>
@@ -126,6 +135,19 @@ export const Switch = forwardRef<SwitchRootProps, "button">(
           <StateLayer css={{ inset: "-$8" }} />
         </StyledThumb>
       </StyledRoot>
+    );
+
+    return label != null ? (
+      <FormLabel
+        label={label}
+        side="left"
+        disabled={disabled}
+        css={{ gap: "$8" }}
+      >
+        {content}
+      </FormLabel>
+    ) : (
+      content
     );
   }
 );

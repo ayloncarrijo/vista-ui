@@ -10,6 +10,7 @@ export default meta;
 
 export const Default: StoryObj<SwitchProps> = {
   args: {
+    label: "Wi-Fi",
     disabled: false,
   },
 };
