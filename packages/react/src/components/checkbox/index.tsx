@@ -7,6 +7,7 @@ import { forwardRef } from "../../utils/forward-ref";
 import { FormLabel } from "../form-label";
 import { Icon } from "../icon";
 import { StateLayer } from "../state-layer";
+import { WrapIf } from "../wrap-if";
 
 export type CheckboxProps = PolymorphicComponentProps<typeof Checkbox>;
 
@@ -87,8 +88,8 @@ export const Checkbox = forwardRef<CheckboxRootProps, "button">(
   (
     {
       label,
-      disabled,
-      error,
+      disabled = false,
+      error = false,
       checked,
       defaultChecked,
       onCheckedChange,
@@ -103,38 +104,42 @@ export const Checkbox = forwardRef<CheckboxRootProps, "button">(
       onChange: onCheckedChange,
     });
 
-    const content = (
-      <StyledRoot
-        ref={ref}
-        checked={isChecked}
-        onCheckedChange={setIsChecked}
-        disabled={disabled}
-        data-error={error}
-        {...props}
+    return (
+      <WrapIf
+        wrappers={[
+          label != null
+            ? (child) => (
+                <FormLabel
+                  label={label}
+                  side="right"
+                  disabled={disabled}
+                  error={error}
+                  css={{ gap: "$4" }}
+                >
+                  {child}
+                </FormLabel>
+              )
+            : null,
+        ]}
       >
-        <StyledContainer>
-          <StyledIndicator>
-            <Icon size="sm">
-              {isChecked === "indeterminate" ? "remove" : "check"}
-            </Icon>
-          </StyledIndicator>
-        </StyledContainer>
-        <StateLayer />
-      </StyledRoot>
-    );
-
-    return label != null ? (
-      <FormLabel
-        label={label}
-        side="right"
-        disabled={disabled}
-        error={error}
-        css={{ gap: "$4" }}
-      >
-        {content}
-      </FormLabel>
-    ) : (
-      content
+        <StyledRoot
+          ref={ref}
+          checked={isChecked}
+          onCheckedChange={setIsChecked}
+          disabled={disabled}
+          data-error={error}
+          {...props}
+        >
+          <StyledContainer>
+            <StyledIndicator>
+              <Icon size="sm">
+                {isChecked === "indeterminate" ? "remove" : "check"}
+              </Icon>
+            </StyledIndicator>
+          </StyledContainer>
+          <StateLayer />
+        </StyledRoot>
+      </WrapIf>
     );
   }
 );

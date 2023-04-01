@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from "@storybook/react";
 import React from "react";
 import { Checkbox, type CheckboxProps } from ".";
-import { Box } from "../box";
+import { FormGroup } from "../form-group";
 
 const meta: Meta<CheckboxProps> = {
   title: "Components/Checkbox",
@@ -20,8 +20,14 @@ export const Default: StoryFn<CheckboxProps> = (props) => {
   const [checkedValues, setCheckedValues] = React.useState<Array<string>>([]);
 
   return (
-    <Box css={{ display: "flex" }}>
-      <div>
+    <>
+      <FormGroup>
+        {values.map((value) => (
+          <Checkbox key={value} name={value} value={value} label={value} />
+        ))}
+      </FormGroup>
+
+      <FormGroup>
         <Checkbox
           {...props}
           label="Additions"
@@ -42,7 +48,7 @@ export const Default: StoryFn<CheckboxProps> = (props) => {
             }
           }}
         />
-        <Box css={{ pl: "$32", display: "grid" }}>
+        <FormGroup indent>
           {values.map((value) => (
             <Checkbox
               {...props}
@@ -65,8 +71,8 @@ export const Default: StoryFn<CheckboxProps> = (props) => {
               }}
             />
           ))}
-        </Box>
-      </div>
-    </Box>
+        </FormGroup>
+      </FormGroup>
+    </>
   );
 };

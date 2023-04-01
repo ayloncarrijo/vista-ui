@@ -7,6 +7,7 @@ import { forwardRef } from "../../utils/forward-ref";
 import { FormLabel } from "../form-label";
 import { Icon } from "../icon";
 import { StateLayer } from "../state-layer";
+import { WrapIf } from "../wrap-if";
 
 export type SwitchProps = PolymorphicComponentProps<typeof Switch>;
 
@@ -111,7 +112,14 @@ const StyledRoot = styled(SwitchPrimitive.Root, stateLayerHook, {
 
 export const Switch = forwardRef<SwitchRootProps, "button">(
   (
-    { label, disabled, checked, defaultChecked, onCheckedChange, ...props },
+    {
+      label,
+      disabled = false,
+      checked,
+      defaultChecked,
+      onCheckedChange,
+      ...props
+    },
     ref
   ) => {
     const [isChecked, setIsChecked] = useControllableState({
@@ -121,33 +129,37 @@ export const Switch = forwardRef<SwitchRootProps, "button">(
       onChange: onCheckedChange,
     });
 
-    const content = (
-      <StyledRoot
-        ref={ref}
-        checked={isChecked}
-        onCheckedChange={setIsChecked}
-        disabled={disabled}
-        {...props}
+    return (
+      <WrapIf
+        wrappers={[
+          label != null
+            ? (child) => (
+                <FormLabel
+                  label={label}
+                  side="left"
+                  disabled={disabled}
+                  css={{ gap: "$8" }}
+                >
+                  {child}
+                </FormLabel>
+              )
+            : null,
+        ]}
       >
-        <StyledThumb>
-          <StyledThumbBackground />
-          <Icon size="xs">{isChecked ? "check" : "close"}</Icon>
-          <StateLayer css={{ inset: "-$8" }} />
-        </StyledThumb>
-      </StyledRoot>
-    );
-
-    return label != null ? (
-      <FormLabel
-        label={label}
-        side="left"
-        disabled={disabled}
-        css={{ gap: "$8" }}
-      >
-        {content}
-      </FormLabel>
-    ) : (
-      content
+        <StyledRoot
+          ref={ref}
+          checked={isChecked}
+          onCheckedChange={setIsChecked}
+          disabled={disabled}
+          {...props}
+        >
+          <StyledThumb>
+            <StyledThumbBackground />
+            <Icon size="xs">{isChecked ? "check" : "close"}</Icon>
+            <StateLayer css={{ inset: "-$8" }} />
+          </StyledThumb>
+        </StyledRoot>
+      </WrapIf>
     );
   }
 );

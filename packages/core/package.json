@@ -22,7 +22,7 @@
     "prepare": "pnpm build"
   },
   "dependencies": {
-    "@ayloncarrijo/utilities": "1.0.0-alpha.12",
+    "@ayloncarrijo/utilities": "1.0.0-alpha.13",
     "@importantimport/material-color-utilities": "0.2.2-alpha.0"
   },
   "devDependencies": {

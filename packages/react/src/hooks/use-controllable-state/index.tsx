@@ -46,7 +46,9 @@ export const useControllableState = <T,>(
   React.useEffect(() => {
     if (internalValue !== prevInternalValue.current) {
       const { onChange } = paramsRef.current;
+
       onChange?.(internalValue);
+
       prevInternalValue.current = internalValue;
     }
   }, [paramsRef, internalValue]);

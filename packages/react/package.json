@@ -24,7 +24,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@ayloncarrijo/utilities": "1.0.0-alpha.12",
+    "@ayloncarrijo/utilities": "1.0.0-alpha.13",
     "@radix-ui/react-aspect-ratio": "^1.0.2",
     "@radix-ui/react-checkbox": "^1.0.3",
     "@radix-ui/react-label": "^2.0.1",

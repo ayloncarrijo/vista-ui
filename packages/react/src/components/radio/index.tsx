@@ -5,6 +5,7 @@ import type { PolymorphicComponentProps } from "../../types/forward-ref";
 import { forwardRef } from "../../utils/forward-ref";
 import { FormLabel } from "../form-label";
 import { StateLayer } from "../state-layer";
+import { WrapIf } from "../wrap-if";
 
 export type RadioProps = PolymorphicComponentProps<typeof Radio>;
 
@@ -69,28 +70,32 @@ const StyledRoot = styled(
 );
 
 export const Radio = forwardRef<RadioRootProps, "button">(
-  ({ label, disabled, error, ...props }, ref) => {
-    const content = (
-      <StyledRoot ref={ref} disabled={disabled} data-error={error} {...props}>
-        <StyledContainer>
-          <StyledIndicator />
-        </StyledContainer>
-        <StateLayer />
-      </StyledRoot>
-    );
-
-    return label != null ? (
-      <FormLabel
-        label={label}
-        side="right"
-        disabled={disabled}
-        error={error}
-        css={{ gap: "$4" }}
+  ({ label, disabled = false, error = false, ...props }, ref) => {
+    return (
+      <WrapIf
+        wrappers={[
+          label != null
+            ? (child) => (
+                <FormLabel
+                  label={label}
+                  side="right"
+                  disabled={disabled}
+                  error={error}
+                  css={{ gap: "$4" }}
+                >
+                  {child}
+                </FormLabel>
+              )
+            : null,
+        ]}
       >
-        {content}
-      </FormLabel>
-    ) : (
-      content
+        <StyledRoot ref={ref} disabled={disabled} data-error={error} {...props}>
+          <StyledContainer>
+            <StyledIndicator />
+          </StyledContainer>
+          <StateLayer />
+        </StyledRoot>
+      </WrapIf>
     );
   }
 );

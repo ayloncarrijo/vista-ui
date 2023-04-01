@@ -2,9 +2,9 @@ import {
   capitalize,
   createFromEntries,
   getEntries,
+  isDefinedEntry,
   isString,
   omit,
-  type NonNullableEntry,
 } from "@ayloncarrijo/utilities";
 import type * as Material from "@importantimport/material-color-utilities";
 import {
@@ -126,9 +126,7 @@ export const createColorSchemes = ({
       error,
       info,
     } satisfies Record<keyof SourceColors, Color | undefined>)
-      .filter(
-        (entry): entry is NonNullableEntry<typeof entry> => entry[1] != null
-      )
+      .filter(isDefinedEntry)
       .map(([key, value]) => ({
         name: key,
         value: convertColorToArgb(value),

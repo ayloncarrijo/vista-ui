@@ -48,7 +48,17 @@ const StyledRoot = styled(Label, {
 });
 
 export const FormLabel = forwardRef<FormLabelRootProps, "label">(
-  ({ children, label, side = "right", disabled, error, ...props }, ref) => (
+  (
+    {
+      children,
+      label,
+      side = "right",
+      disabled = false,
+      error = false,
+      ...props
+    },
+    ref
+  ) => (
     <StyledRoot
       ref={ref}
       side={side}
