@@ -13,6 +13,7 @@ export * from "./components/radio-group";
 export * from "./components/state-layer";
 export * from "./components/switch";
 export * from "./components/text";
+export * from "./components/text-input";
 export * from "./components/tooltip";
 export * from "./components/wrap-if";
 export * from "./css";

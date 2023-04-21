@@ -11,20 +11,20 @@ export const Icon = styled("span", {
   letterSpacing: "normal",
   textTransform: "none",
   display: "inline-block",
+  userSelect: "none",
   fontFamily: "$icons",
   fontWeight: "normal",
   fontStyle: "normal",
-  fontVariationSettings:
-    "'FILL' $$fontVarFill, 'wght' 400, 'GRAD' 0, 'opsz' 24",
+  fontVariationSettings: "'FILL' $$fill, 'wght' 400, 'GRAD' 0, 'opsz' 24",
   WebkitFontFeatureSettings: "'liga'",
   WebkitFontSmoothing: "antialiased",
   variants: {
     variant: {
       filled: {
-        $$fontVarFill: "1",
+        $$fill: "1",
       },
       outlined: {
-        $$fontVarFill: "0",
+        $$fill: "0",
       },
     },
     size: {
