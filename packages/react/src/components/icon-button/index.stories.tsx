@@ -43,11 +43,11 @@ const Template: StoryFn<IconButtonProps> = (props) => {
       <IconButton {...props} toggle="no-toggle" />
       <IconButton
         {...props}
+        label="Toggle selection"
+        toggle={selected ? "selected" : "unselected"}
         onClick={() => {
           setSelected(!selected);
         }}
-        label="Toggle selection"
-        toggle={selected ? "selected" : "unselected"}
       />
       <IconButton {...props} toggle="unselected" disabled />
       <IconButton {...props} toggle="selected" disabled />

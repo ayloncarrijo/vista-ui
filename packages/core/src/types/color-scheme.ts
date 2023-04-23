@@ -1,4 +1,4 @@
-import type * as Material from "@importantimport/material-color-utilities";
+import type * as Material from "@material/material-color-utilities";
 
 export type Hexadecimal = `#${string}`;
 

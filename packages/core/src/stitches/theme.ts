@@ -62,6 +62,7 @@ export const shadows = {
 export const sizes = {
   prose: "65ch",
   px: "1px",
+  container: "1072px",
   4: convertPxToRem(4),
   8: convertPxToRem(8),
   12: convertPxToRem(12),
