@@ -3,6 +3,7 @@ export * from "./components/box";
 export * from "./components/button";
 export * from "./components/checkbox";
 export * from "./components/checkbox-group";
+export * from "./components/divider";
 export * from "./components/form-group";
 export * from "./components/form-label";
 export * from "./components/icon";

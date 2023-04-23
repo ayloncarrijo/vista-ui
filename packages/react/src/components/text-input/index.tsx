@@ -222,7 +222,14 @@ export const TextInput = forwardRef<TextInputRootProps, "input">(
         data-start-icon={hasStartIcon}
         data-end-icon={hasEndIcon}
       >
-        <StyledInputRoot onClick={() => inputRef.current?.focus()}>
+        <StyledInputRoot
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) {
+              event.preventDefault();
+              inputRef.current?.focus();
+            }
+          }}
+        >
           <StyledLabel htmlFor={id}>{label}</StyledLabel>
           <StyledFieldset>
             <StyledLegend>{label}</StyledLegend>
