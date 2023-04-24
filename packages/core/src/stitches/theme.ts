@@ -59,10 +59,8 @@ export const shadows = {
   elevation5: "$12dp",
 };
 
-export const sizes = {
-  prose: "65ch",
+export const space = {
   px: "1px",
-  container: "1072px",
   4: convertPxToRem(4),
   8: convertPxToRem(8),
   12: convertPxToRem(12),
@@ -98,7 +96,14 @@ export const sizes = {
   512: convertPxToRem(512),
 };
 
-export const space = sizes;
+export const sizes = {
+  ...space,
+  xs: "480px",
+  sm: "720px",
+  md: "1072px",
+  container: "1072px",
+  prose: "65ch",
+};
 
 export const transitions = {
   easeIn: "150ms ease-in",

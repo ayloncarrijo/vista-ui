@@ -61,9 +61,9 @@ const stitches = createStitches({
     lineHeights,
   },
   media: {
-    xs: "(min-width: 480px)",
-    sm: "(min-width: 720px)",
-    md: "(min-width: 1072px)",
+    xs: `(min-width: ${sizes.xs})`,
+    sm: `(min-width: ${sizes.sm})`,
+    md: `(min-width: ${sizes.md})`,
   },
   utils: {
     ...createRgbUtilities(themeMap),
