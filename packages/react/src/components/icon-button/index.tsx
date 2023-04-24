@@ -9,7 +9,7 @@ import { Tooltip } from "../tooltip";
 export type IconButtonProps = PolymorphicComponentProps<typeof IconButton>;
 
 export type IconButtonRootProps = {
-  icon: React.ReactNode;
+  children: React.ReactNode;
   label: string;
   variant?: "filled" | "tonal" | "outlined" | "standard";
   toggle?: "no-toggle" | "unselected" | "selected";
@@ -127,7 +127,7 @@ const StyledRoot = styled("button", iconButtonShape, stateLayerHook, {
 
 export const IconButton = forwardRef<IconButtonRootProps, "button">(
   (
-    { icon, label, variant = "standard", toggle = "no-toggle", ...props },
+    { children, label, variant = "standard", toggle = "no-toggle", ...props },
     ref
   ) => (
     <Tooltip content={label}>
@@ -138,12 +138,12 @@ export const IconButton = forwardRef<IconButtonRootProps, "button">(
         aria-label={label}
         {...props}
       >
-        {typeof icon === "string" ? (
+        {typeof children === "string" ? (
           <Icon variant={toggle === "selected" ? "filled" : "outlined"}>
-            {icon}
+            {children}
           </Icon>
         ) : (
-          icon
+          children
         )}
         <StateLayer />
       </StyledRoot>

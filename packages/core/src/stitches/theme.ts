@@ -17,6 +17,7 @@ export const colors = {
 };
 
 export const opacities = {
+  scrim: 0.32,
   hover: 0.08,
   focus: 0.12,
   pressed: 0.12,

@@ -14,7 +14,7 @@ const meta: Meta<IconButtonProps> = {
     ),
   ],
   args: {
-    icon: "favorite",
+    children: "favorite",
     label: "Add to favorites",
   },
   argTypes: {
