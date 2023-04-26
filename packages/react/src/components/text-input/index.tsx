@@ -21,7 +21,7 @@ export type TextInputRootProps = {
   onValueChange?: (value: string) => void;
 };
 
-const StyledInputRoot = styled("div", {
+const StyledInputArea = styled("div", {
   position: "relative",
   display: "flex",
   alignItems: "center",
@@ -76,24 +76,19 @@ const StyledLegend = styled("legend", {
   typography: "$bodySm",
 });
 
-const StyledHelperRoot = styled("div", {
+const StyledHelperArea = styled("div", {
   minHeight: "$lineHeights$bodySm",
   mt: "$4",
   px: "$16",
-  display: "grid",
-  gridTemplateColumns: "1fr",
+  display: "flex",
   gap: "$16",
   typography: "$bodySm",
   color: "$onSurfaceVariant",
 });
 
-const StyledCaption = styled("p", {
-  gridColumn: "1",
-});
-
 const StyledCharCount = styled("p", {
   whiteSpace: "nowrap",
-  gridColumn: "2",
+  ml: "auto",
 });
 
 const StyledIcon = styled("div", {
@@ -108,7 +103,7 @@ const StyledRoot = styled("div", {
   display: "inline-flex",
   flexDirection: "column",
   "&[data-start-icon='true']": {
-    [String(StyledInputRoot)]: {
+    [String(StyledInputArea)]: {
       pl: "$12",
     },
     [String(StyledLabel)]: {
@@ -116,7 +111,7 @@ const StyledRoot = styled("div", {
     },
   },
   "&[data-end-icon='true']": {
-    [String(StyledInputRoot)]: {
+    [String(StyledInputArea)]: {
       pr: "$12",
     },
   },
@@ -147,7 +142,7 @@ const StyledRoot = styled("div", {
     [String(StyledLabel)]: {
       color: "$error",
     },
-    [String(StyledHelperRoot)]: {
+    [String(StyledHelperArea)]: {
       color: "$error",
     },
   },
@@ -158,7 +153,7 @@ const StyledRoot = styled("div", {
     [String(StyledLabel)]: {
       color: "$disabledContent",
     },
-    [String(StyledHelperRoot)]: {
+    [String(StyledHelperArea)]: {
       color: "$disabledContent",
     },
     [String(StyledIcon)]: {
@@ -222,7 +217,7 @@ export const TextInput = forwardRef<TextInputRootProps, "input">(
         data-start-icon={hasStartIcon}
         data-end-icon={hasEndIcon}
       >
-        <StyledInputRoot
+        <StyledInputArea
           onMouseDown={(event) => {
             if (event.target === event.currentTarget) {
               event.preventDefault();
@@ -264,15 +259,15 @@ export const TextInput = forwardRef<TextInputRootProps, "input">(
               <Icon variant={hasError ? "filled" : "outlined"}>{endIcon}</Icon>
             </StyledIcon>
           )}
-        </StyledInputRoot>
-        <StyledHelperRoot>
-          {hasCaption && <StyledCaption>{caption}</StyledCaption>}
+        </StyledInputArea>
+        <StyledHelperArea>
+          {hasCaption && <p>{caption}</p>}
           {maxLength != null && (
             <StyledCharCount>
               {value.length} / {maxLength}
             </StyledCharCount>
           )}
-        </StyledHelperRoot>
+        </StyledHelperArea>
       </StyledRoot>
     );
   }

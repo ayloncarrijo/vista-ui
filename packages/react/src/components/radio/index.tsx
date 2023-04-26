@@ -9,7 +9,9 @@ import { WrapIf } from "../wrap-if";
 
 export type RadioProps = PolymorphicComponentProps<typeof Radio>;
 
-export type RadioRootProps = RadioGroupPrimitive.RadioGroupItemProps & {
+export type RadioRootProps = React.ComponentProps<
+  typeof RadioGroupPrimitive.Item
+> & {
   label?: string;
   error?: boolean;
 };

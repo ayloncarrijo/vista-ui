@@ -5,15 +5,18 @@ import { forwardRef } from "../../utils/forward-ref";
 
 export type TooltipProps = PolymorphicComponentProps<typeof Tooltip>;
 
-export type TooltipRootProps = TooltipPrimitive.TooltipProps & {
-  content: React.ReactNode;
-};
+export type TooltipRootProps = React.ComponentProps<
+  typeof TooltipPrimitive.Root
+> &
+  React.ComponentProps<typeof TooltipPrimitive.Content> & {
+    content: React.ReactNode;
+  };
 
 const StyledContent = styled(TooltipPrimitive.Content, {
   zIndex: "$tooltip",
   position: "relative",
   typography: "$bodySm",
-  borderRadius: "$sm",
+  borderRadius: "$xs",
   maxWidth: "$256",
   py: "$8",
   px: "$12",
@@ -55,3 +58,5 @@ export const Tooltip = forwardRef<TooltipRootProps, "div">(
     </TooltipPrimitive.Root>
   )
 );
+
+export * from "./tooltip-provider";

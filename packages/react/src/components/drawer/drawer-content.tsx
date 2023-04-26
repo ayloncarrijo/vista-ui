@@ -1,5 +1,6 @@
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { fadeIn, fadeOut, keyframes, styled } from "@you-ui/core";
+import type React from "react";
 import type { PolymorphicComponentProps } from "../../types/forward-ref";
 import { forwardRef } from "../../utils/forward-ref";
 
@@ -7,7 +8,9 @@ export type DrawerContentProps = PolymorphicComponentProps<
   typeof DrawerContent
 >;
 
-export type DrawerContentRootProps = DialogPrimitive.DialogContentProps;
+export type DrawerContentRootProps = React.ComponentProps<
+  typeof DialogPrimitive.Content
+>;
 
 export const slideIn = keyframes({
   "0%": { translate: "-100%" },
@@ -20,6 +23,7 @@ export const slideOut = keyframes({
 });
 
 const StyledOverlay = styled(DialogPrimitive.Overlay, {
+  zIndex: "$drawer",
   position: "fixed",
   inset: 0,
   backgroundColor: "$scrim/$opacities$scrim",
@@ -32,14 +36,14 @@ const StyledOverlay = styled(DialogPrimitive.Overlay, {
 });
 
 const StyledContent = styled(DialogPrimitive.Content, {
-  maxWidth: 360,
-  p: "$28",
+  zIndex: "$drawer",
   position: "fixed",
   top: 0,
-  right: 64,
+  right: "$48",
   bottom: 0,
   left: 0,
-  overflowY: "auto",
+  maxWidth: "$352",
+  overflow: "hidden",
   backgroundColor: "$surfaceContainerLow",
   boxShadow: "$elevation1",
   borderTopRightRadius: "$lg",
@@ -52,12 +56,25 @@ const StyledContent = styled(DialogPrimitive.Content, {
   },
 });
 
+const StyledScrollArea = styled("div", {
+  height: "100%",
+  overflowY: "auto",
+  p: "$28",
+});
+
 export const DrawerContent = forwardRef<DrawerContentRootProps, "div">(
-  ({ children, ...props }, ref) => (
+  ({ children, onOpenAutoFocus, ...props }, ref) => (
     <DialogPrimitive.Portal>
       <StyledOverlay />
-      <StyledContent ref={ref} {...props}>
-        {children}
+      <StyledContent
+        ref={ref}
+        onOpenAutoFocus={(event: Event) => {
+          event.preventDefault();
+          onOpenAutoFocus?.(event);
+        }}
+        {...props}
+      >
+        <StyledScrollArea>{children}</StyledScrollArea>
       </StyledContent>
     </DialogPrimitive.Portal>
   )

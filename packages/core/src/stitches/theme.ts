@@ -9,6 +9,8 @@ export const zIndices = {
   40: 40,
   50: 50,
   tooltip: 1000,
+  drawer: 1500,
+  toast: 2000,
 };
 
 export const colors = {
@@ -61,7 +63,6 @@ export const shadows = {
 };
 
 export const space = {
-  px: "1px",
   4: convertPxToRem(4),
   8: convertPxToRem(8),
   12: convertPxToRem(12),
@@ -92,8 +93,11 @@ export const space = {
   256: convertPxToRem(256),
   288: convertPxToRem(288),
   320: convertPxToRem(320),
+  352: convertPxToRem(352),
   384: convertPxToRem(384),
+  416: convertPxToRem(416),
   448: convertPxToRem(448),
+  480: convertPxToRem(480),
   512: convertPxToRem(512),
 };
 

@@ -15,6 +15,7 @@ export type ButtonRootProps = {
   endIcon?: string;
   fullWidth?: boolean;
   loading?: boolean;
+  inverse?: boolean;
 };
 
 const StyledRoot = styled("button", stateLayerHook, {
@@ -30,6 +31,7 @@ const StyledRoot = styled("button", stateLayerHook, {
   typography: "$labelLg",
   lineHeight: "normal",
   userSelect: "none",
+  whiteSpace: "nowrap",
   variants: {
     variant: {
       elevated: {
@@ -85,6 +87,11 @@ const StyledRoot = styled("button", stateLayerHook, {
         },
       },
     },
+    inverse: {
+      true: {
+        color: "$inversePrimary",
+      },
+    },
     fullWidth: {
       true: { width: "100%" },
     },
@@ -98,6 +105,7 @@ export const Button = forwardRef<ButtonRootProps, "button">(
       startIcon,
       endIcon,
       loading = false,
+      inverse = false,
       disabled = false,
       children,
       ...props
@@ -107,6 +115,7 @@ export const Button = forwardRef<ButtonRootProps, "button">(
     <StyledRoot
       ref={ref}
       variant={variant}
+      inverse={inverse}
       disabled={loading || disabled}
       {...props}
     >

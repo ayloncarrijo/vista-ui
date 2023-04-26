@@ -1,6 +1,7 @@
 import { capitalize } from "@ayloncarrijo/utilities";
 import type { Meta, StoryFn, StoryObj } from "@storybook/react";
 import { typography } from "@you-ui/core";
+import React from "react";
 import { Text, type TextProps } from ".";
 import { Box } from "../box";
 
@@ -35,10 +36,18 @@ export const Prose: StoryObj<TextProps> = {
 
 export const Typographies: StoryFn<TextProps> = (props) => (
   <Box css={{ display: "grid", gap: "$8" }}>
-    {typography.tokens.map((token) => (
-      <Text {...props} key={token} typography={token}>
-        {capitalize(token)}
-      </Text>
+    {typography.roles.map((role) => (
+      <React.Fragment key={role}>
+        <Text {...props} typography={`${role}Lg`}>
+          {capitalize(role)}
+        </Text>
+        <Text {...props} typography={`${role}Md`}>
+          {capitalize(role)}
+        </Text>
+        <Text {...props} typography={`${role}Sm`}>
+          {capitalize(role)}
+        </Text>
+      </React.Fragment>
     ))}
   </Box>
 );

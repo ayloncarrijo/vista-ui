@@ -1,5 +1,6 @@
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { styled } from "@you-ui/core";
+import type React from "react";
 import { iconButtonShape, stateLayerHook } from "../../css";
 import { useControllableState } from "../../hooks/use-controllable-state";
 import type { PolymorphicComponentProps } from "../../types/forward-ref";
@@ -11,7 +12,9 @@ import { WrapIf } from "../wrap-if";
 
 export type CheckboxProps = PolymorphicComponentProps<typeof Checkbox>;
 
-export type CheckboxRootProps = CheckboxPrimitive.CheckboxProps & {
+export type CheckboxRootProps = React.ComponentProps<
+  typeof CheckboxPrimitive.Root
+> & {
   label?: string;
   error?: boolean;
 };

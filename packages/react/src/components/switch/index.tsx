@@ -11,7 +11,9 @@ import { WrapIf } from "../wrap-if";
 
 export type SwitchProps = PolymorphicComponentProps<typeof Switch>;
 
-export type SwitchRootProps = SwitchPrimitive.SwitchProps & {
+export type SwitchRootProps = React.ComponentProps<
+  typeof SwitchPrimitive.Root
+> & {
   label?: string;
 };
 

@@ -13,7 +13,7 @@ export default meta;
 export const Default: StoryFn = () => (
   <Drawer>
     <DrawerTrigger asChild>
-      <Button>Abrir</Button>
+      <Button>Open drawer</Button>
     </DrawerTrigger>
     <DrawerContent>
       <DrawerHeader>
