@@ -9,7 +9,6 @@ import { Tooltip } from "../tooltip";
 export type IconButtonProps = PolymorphicComponentProps<typeof IconButton>;
 
 export type IconButtonRootProps = {
-  children: React.ReactNode;
   label: string;
   variant?: "filled" | "tonal" | "outlined" | "standard";
   toggle?: "no-toggle" | "unselected" | "selected";
@@ -138,13 +137,9 @@ export const IconButton = forwardRef<IconButtonRootProps, "button">(
         aria-label={label}
         {...props}
       >
-        {typeof children === "string" ? (
-          <Icon variant={toggle === "selected" ? "filled" : "outlined"}>
-            {children}
-          </Icon>
-        ) : (
-          children
-        )}
+        <Icon variant={toggle === "selected" ? "filled" : "outlined"}>
+          {children}
+        </Icon>
         <StateLayer />
       </StyledRoot>
     </Tooltip>

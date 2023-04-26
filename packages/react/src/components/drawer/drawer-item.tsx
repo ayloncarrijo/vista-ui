@@ -1,4 +1,5 @@
 import { styled } from "@you-ui/core";
+import type React from "react";
 import { stateLayerHook } from "../../css";
 import type { PolymorphicComponentProps } from "../../types/forward-ref";
 import { forwardRef } from "../../utils/forward-ref";
@@ -8,7 +9,7 @@ import { StateLayer } from "../state-layer";
 export type DrawerItemProps = PolymorphicComponentProps<typeof DrawerItem>;
 
 export type DrawerItemRootProps = {
-  icon?: string;
+  icon?: React.ReactNode;
   active?: boolean;
 };
 
