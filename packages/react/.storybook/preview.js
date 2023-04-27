@@ -1,4 +1,4 @@
-import { injectBaseStyles } from "@you-ui/core";
+import { injectBaseStyles } from "@vista-ui/core";
 import { GlobalProvider } from "../src/providers/global-provider";
 
 /** @type { import('@storybook/react').Preview } */

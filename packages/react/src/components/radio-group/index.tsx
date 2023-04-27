@@ -1,5 +1,5 @@
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
-import { styled } from "@you-ui/core";
+import { styled } from "@vista-ui/core";
 
 export type RadioGroupProps = React.ComponentProps<typeof RadioGroup>;
 

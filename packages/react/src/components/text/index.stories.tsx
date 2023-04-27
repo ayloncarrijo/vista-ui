@@ -1,6 +1,6 @@
 import { capitalize } from "@ayloncarrijo/utilities";
 import type { Meta, StoryFn, StoryObj } from "@storybook/react";
-import { typography } from "@you-ui/core";
+import { typography } from "@vista-ui/core";
 import React from "react";
 import { Text, type TextProps } from ".";
 import { Box } from "../box";

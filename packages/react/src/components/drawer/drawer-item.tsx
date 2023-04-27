@@ -1,4 +1,4 @@
-import { styled } from "@you-ui/core";
+import { styled } from "@vista-ui/core";
 import type React from "react";
 import { stateLayerHook } from "../../css";
 import type { PolymorphicComponentProps } from "../../types/forward-ref";

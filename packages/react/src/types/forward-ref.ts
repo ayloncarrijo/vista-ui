@@ -1,5 +1,5 @@
 import type { LeftJoin } from "@ayloncarrijo/utilities";
-import type { Css } from "@you-ui/core";
+import type { Css } from "@vista-ui/core";
 
 // TODO: Review performance of generic constraints
 // https://github.com/microsoft/TypeScript/issues/53035

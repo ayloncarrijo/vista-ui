@@ -74,7 +74,7 @@ importers:
       '@svgr/webpack': ^7.0.0
       '@types/react': ^18.0.38
       '@types/react-dom': ^18.0.11
-      '@you-ui/core': workspace:*
+      '@vista-ui/core': workspace:*
       prop-types: 15.8.1
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -103,7 +103,7 @@ importers:
       '@svgr/webpack': 7.0.0
       '@types/react': 18.0.38
       '@types/react-dom': 18.0.11
-      '@you-ui/core': link:../core
+      '@vista-ui/core': link:../core
       prop-types: 15.8.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -2793,7 +2793,7 @@ packages:
       '@storybook/csf-plugin': 7.0.0-rc.5
       '@storybook/csf-tools': 7.0.0-rc.5
       '@storybook/global': 5.0.0
-      '@storybook/mdx2-csf': 1.0.0-next.8
+      '@storybook/mdx2-csf': 1.1.0-next.0
       '@storybook/node-logger': 7.0.0-rc.5
       '@storybook/postinstall': 7.0.0-rc.5
       '@storybook/preview-api': 7.0.0-rc.5
@@ -3503,8 +3503,8 @@ packages:
     resolution: {integrity: sha512-VPTIYzcKguKaA+4HGFPAPRdDGTZ8fxKAKL71VgP+AOOJhNmdTWHCXs8Yu7GMg/2uyRZ2zSKiOeBESh+Qb8pRZg==}
     dev: true
 
-  /@storybook/mdx2-csf/1.0.0-next.8:
-    resolution: {integrity: sha512-t2O5s/HHTH5evZVHgVtCWTZgMZ/CaqDu3xVGgjVbKeTvpPAbi0Waab5SSX8T9PG5jNDei/x+jpAVCcNMOHoWzg==}
+  /@storybook/mdx2-csf/1.1.0-next.0:
+    resolution: {integrity: sha512-DeXEULA683XaoNJpAwqJU4lKnpCAACdIiSDqCuAfKzhHYAv11snQ8VjPrtR1I0WcWG4ATi+TawT1dWFnsYhhAQ==}
     dev: true
 
   /@storybook/node-logger/7.0.0-rc.5:

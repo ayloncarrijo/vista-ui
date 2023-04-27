@@ -1,4 +1,4 @@
-import type { Css } from "@you-ui/core";
+import type { Css } from "@vista-ui/core";
 import { StateLayer } from "./components/state-layer";
 
 export const iconButtonShape: Css = {

@@ -1,4 +1,4 @@
-import { styled } from "@you-ui/core";
+import { styled } from "@vista-ui/core";
 import React from "react";
 import { useControllableState } from "../../hooks/use-controllable-state";
 import type { PolymorphicComponentProps } from "../../types/forward-ref";

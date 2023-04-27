@@ -1,4 +1,4 @@
-import { styled } from "@you-ui/core";
+import { styled } from "@vista-ui/core";
 
 export type StateLayerProps = React.ComponentProps<typeof StateLayer>;
 

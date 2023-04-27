@@ -1,5 +1,5 @@
 import * as SwitchPrimitive from "@radix-ui/react-switch";
-import { styled } from "@you-ui/core";
+import { styled } from "@vista-ui/core";
 import { stateLayerHook } from "../../css";
 import { useControllableState } from "../../hooks/use-controllable-state";
 import type { PolymorphicComponentProps } from "../../types/forward-ref";

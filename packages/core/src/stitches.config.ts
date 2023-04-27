@@ -39,7 +39,7 @@ const themeMap = {
 } as const;
 
 const stitches = createStitches({
-  prefix: "youUi",
+  prefix: "vistaUi",
   themeMap,
   theme: {
     zIndices,

@@ -1,5 +1,5 @@
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
-import { scaleDown, scaleUp, styled } from "@you-ui/core";
+import { scaleDown, scaleUp, styled } from "@vista-ui/core";
 import { iconButtonShape, stateLayerHook } from "../../css";
 import type { PolymorphicComponentProps } from "../../types/forward-ref";
 import { forwardRef } from "../../utils/forward-ref";

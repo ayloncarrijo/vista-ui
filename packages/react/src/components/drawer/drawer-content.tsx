@@ -1,5 +1,5 @@
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { fadeIn, fadeOut, keyframes, styled } from "@you-ui/core";
+import { fadeIn, fadeOut, keyframes, styled } from "@vista-ui/core";
 import type React from "react";
 import type { PolymorphicComponentProps } from "../../types/forward-ref";
 import { forwardRef } from "../../utils/forward-ref";

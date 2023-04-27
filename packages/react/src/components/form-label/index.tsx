@@ -1,4 +1,4 @@
-import { styled } from "@you-ui/core";
+import { styled } from "@vista-ui/core";
 import type { PolymorphicComponentProps } from "../../types/forward-ref";
 import { forwardRef } from "../../utils/forward-ref";
 import { Label, type LabelProps } from "../label";

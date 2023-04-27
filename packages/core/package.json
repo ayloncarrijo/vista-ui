@@ -1,6 +1,6 @@
 {
   "version": "1.0.0-alpha.0",
-  "name": "@you-ui/core",
+  "name": "@vista-ui/core",
   "license": "MIT",
   "type": "module",
   "module": "./build/esm/index.mjs",

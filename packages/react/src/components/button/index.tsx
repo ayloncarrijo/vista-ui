@@ -1,4 +1,4 @@
-import { styled } from "@you-ui/core";
+import { styled } from "@vista-ui/core";
 import Spinner from "../../assets/icons/spinner.svg";
 import { stateLayerHook } from "../../css";
 import type { PolymorphicComponentProps } from "../../types/forward-ref";

@@ -5,7 +5,7 @@ const meta: Meta<TextInputProps> = {
   title: "Components/TextInput",
   component: TextInput,
   args: {
-    id: "you-ui-input",
+    id: "vista-ui-input",
     as: "input",
     label: "E-mail",
     helper: "A helper text",

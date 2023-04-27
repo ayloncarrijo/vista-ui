@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "name": "you-ui",
+  "name": "vista-ui",
   "private": true,
   "type": "module",
   "prettier": "@ayloncarrijo/prettier-config",
@@ -13,8 +13,8 @@
     "commit": "cz",
     "build": "turbo build",
     "dev": "turbo dev",
-    "core": "pnpm --filter \"@you-ui/core\"",
-    "react": "pnpm --filter \"@you-ui/react\""
+    "core": "pnpm --filter \"@vista-ui/core\"",
+    "react": "pnpm --filter \"@vista-ui/react\""
   },
   "devDependencies": {
     "@ayloncarrijo/eslint-config": "^1.9.0",
