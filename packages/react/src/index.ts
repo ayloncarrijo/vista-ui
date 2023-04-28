@@ -22,4 +22,7 @@ export * from "./components/wrap-if";
 export * from "./css";
 export * from "./hooks/use-controllable-state";
 export * from "./hooks/use-latest-ref";
+export * from "./providers/global-provider";
+export * from "./types/forward-ref";
+export * from "./utils/assign-ref";
 export * from "./utils/forward-ref";
