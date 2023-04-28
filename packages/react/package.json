@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.1",
   "name": "@vista-ui/react",
   "license": "MIT",
   "type": "module",
@@ -24,7 +24,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@ayloncarrijo/utilities": "1.0.0-alpha.13",
+    "@ayloncarrijo/utilities": "1.0.0-alpha.14",
     "@radix-ui/react-aspect-ratio": "^1.0.2",
     "@radix-ui/react-checkbox": "^1.0.3",
     "@radix-ui/react-dialog": "^1.0.3",
@@ -45,14 +45,14 @@
     "@storybook/react-webpack5": "7.0.0-rc.5",
     "@storybook/testing-library": "0.0.14-next.1",
     "@svgr/webpack": "^7.0.0",
-    "@types/react": "^18.0.38",
-    "@types/react-dom": "^18.0.11",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.1",
     "@vista-ui/core": "workspace:*",
     "prop-types": "15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "storybook": "7.0.0-rc.5",
-    "typescript": "^4.9.5"
+    "typescript": "^5.0.4"
   },
   "peerDependencies": {
     "@vista-ui/core": "workspace:*",
