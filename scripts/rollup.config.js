@@ -6,29 +6,30 @@ import del from "rollup-plugin-delete";
 import external from "rollup-plugin-peer-deps-external";
 import typescript from "rollup-plugin-ts";
 
-export const createRollupConfig = (
-  /** @type {import("rollup").RollupOptions} */ config
-) =>
+export const createRollupConfig = () =>
   defineConfig(({ watch }) => ({
     input: "./src/index.ts",
     output: [
       {
-        file: "./build/cjs/index.cjs",
+        file: "./build/index.cjs",
         format: "cjs",
         interop: "auto",
       },
       {
-        file: "./build/esm/index.mjs",
+        file: "./build/index.mjs",
         format: "esm",
       },
     ],
     plugins: [
       !watch && del({ targets: "build/*" }),
-      external({ includeDependencies: true }),
+      external(),
       resolve(),
       commonjs(),
       svgr(),
-      typescript(),
+      typescript({
+        hook: {
+          outputPath: (path) => path.replace(/d\.(m|c)ts/, "d.ts"),
+        },
+      }),
     ],
-    ...config,
   }));

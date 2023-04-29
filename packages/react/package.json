@@ -1,16 +1,16 @@
 {
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "name": "@vista-ui/react",
   "license": "MIT",
   "type": "module",
-  "module": "./build/esm/index.mjs",
-  "main": "./build/cjs/index.cjs",
-  "types": "./build/esm/index.d.mts",
+  "module": "./build/index.mjs",
+  "main": "./build/index.cjs",
+  "types": "./build/index.d.ts",
   "exports": {
     ".": {
-      "import": "./build/esm/index.mjs",
-      "require": "./build/cjs/index.cjs",
-      "types": "./build/esm/index.d.mts"
+      "import": "./build/index.mjs",
+      "require": "./build/index.cjs",
+      "types": "./build/index.d.ts"
     }
   },
   "files": [
@@ -24,7 +24,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@ayloncarrijo/utilities": "1.0.0-alpha.14",
+    "@ayloncarrijo/utilities": "1.0.0-alpha.15",
     "@radix-ui/react-aspect-ratio": "^1.0.2",
     "@radix-ui/react-checkbox": "^1.0.3",
     "@radix-ui/react-dialog": "^1.0.3",

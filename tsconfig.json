@@ -1,8 +1,9 @@
 {
   "extends": "@ayloncarrijo/typescript-config",
   "compilerOptions": {
+    "module": "esnext",
     "moduleResolution": "node",
-    "target": "es6",
+    "target": "es5",
     "jsx": "react-jsx",
     "declaration": true
   }

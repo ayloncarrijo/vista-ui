@@ -1,16 +1,16 @@
 {
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "name": "@vista-ui/core",
   "license": "MIT",
   "type": "module",
-  "module": "./build/esm/index.mjs",
-  "main": "./build/cjs/index.cjs",
-  "types": "./build/esm/index.d.mts",
+  "module": "./build/index.mjs",
+  "main": "./build/index.cjs",
+  "types": "./build/index.d.ts",
   "exports": {
     ".": {
-      "import": "./build/esm/index.mjs",
-      "require": "./build/cjs/index.cjs",
-      "types": "./build/esm/index.d.mts"
+      "import": "./build/index.mjs",
+      "require": "./build/index.cjs",
+      "types": "./build/index.d.ts"
     }
   },
   "files": [
@@ -22,7 +22,7 @@
     "prepare": "pnpm build"
   },
   "dependencies": {
-    "@ayloncarrijo/utilities": "1.0.0-alpha.14",
+    "@ayloncarrijo/utilities": "1.0.0-alpha.15",
     "@material/material-color-utilities": "^0.2.6"
   },
   "devDependencies": {

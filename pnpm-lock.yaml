@@ -53,8 +53,8 @@ importers:
   packages/core:
     dependencies:
       '@ayloncarrijo/utilities':
-        specifier: 1.0.0-alpha.14
-        version: 1.0.0-alpha.14
+        specifier: 1.0.0-alpha.15
+        version: 1.0.0-alpha.15
       '@material/material-color-utilities':
         specifier: ^0.2.6
         version: 0.2.6
@@ -72,8 +72,8 @@ importers:
   packages/react:
     dependencies:
       '@ayloncarrijo/utilities':
-        specifier: 1.0.0-alpha.14
-        version: 1.0.0-alpha.14
+        specifier: 1.0.0-alpha.15
+        version: 1.0.0-alpha.15
       '@radix-ui/react-aspect-ratio':
         specifier: ^1.0.2
         version: 1.0.2(react-dom@18.2.0)(react@18.2.0)
@@ -212,8 +212,8 @@ packages:
       typescript: 5.0.4
     dev: true
 
-  /@ayloncarrijo/utilities@1.0.0-alpha.14:
-    resolution: {integrity: sha512-c2Fge0nn6PqBciomecCzkh7DR2taLdLyF9zD5F5zJSDqg+ZH2ggHL5/swF7c5pT+dgm2kgzwJuH68A0I4mzMeA==}
+  /@ayloncarrijo/utilities@1.0.0-alpha.15:
+    resolution: {integrity: sha512-LO3k0qrlNCMhnVepORGFebT6/8f3jAgm2bFE/lOYaciJSSdGbNL2K3kaI+ids20aeits8hUIlNbTS/WQe/V1nA==}
     dev: false
 
   /@babel/code-frame@7.21.4:
@@ -2837,7 +2837,7 @@ packages:
       '@storybook/csf-plugin': 7.0.0-rc.5
       '@storybook/csf-tools': 7.0.0-rc.5
       '@storybook/global': 5.0.0
-      '@storybook/mdx2-csf': 1.1.0-next.0
+      '@storybook/mdx2-csf': 1.1.0-next.1
       '@storybook/node-logger': 7.0.0-rc.5
       '@storybook/postinstall': 7.0.0-rc.5
       '@storybook/preview-api': 7.0.0-rc.5
@@ -3547,8 +3547,8 @@ packages:
     resolution: {integrity: sha512-VPTIYzcKguKaA+4HGFPAPRdDGTZ8fxKAKL71VgP+AOOJhNmdTWHCXs8Yu7GMg/2uyRZ2zSKiOeBESh+Qb8pRZg==}
     dev: true
 
-  /@storybook/mdx2-csf@1.1.0-next.0:
-    resolution: {integrity: sha512-DeXEULA683XaoNJpAwqJU4lKnpCAACdIiSDqCuAfKzhHYAv11snQ8VjPrtR1I0WcWG4ATi+TawT1dWFnsYhhAQ==}
+  /@storybook/mdx2-csf@1.1.0-next.1:
+    resolution: {integrity: sha512-ONvFBZySHsBIkUYGrUM8FCG2tDKf663TIErztPSOghOpmBGyFLjSsXJHkNWiRi4c740PoemLqJd2XZZVlXRVLQ==}
     dev: true
 
   /@storybook/node-logger@7.0.0-rc.5:
