@@ -21,9 +21,10 @@ const StyledRoot = styled("a", stateLayerHook, {
   display: "flex",
   alignItems: "center",
   gap: "$12",
-  typography: "$labelLg",
-  color: "$onSurfaceVariant",
   borderRadius: "$full",
+  color: "$onSurfaceVariant",
+  typography: "$labelLg",
+  lineHeight: "normal",
   variants: {
     active: {
       true: {
