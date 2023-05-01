@@ -8,7 +8,7 @@ import { IconButton } from "../icon-button";
 export type DrawerHeaderProps = PolymorphicComponentProps<typeof DrawerHeader>;
 
 const StyledRoot = styled("header", {
-  mb: "$28",
+  mb: "$$contentPadding",
   display: "flex",
   alignItems: "center",
   gap: "$16",

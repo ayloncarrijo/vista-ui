@@ -59,7 +59,8 @@ const StyledContent = styled(DialogPrimitive.Content, {
 const StyledScrollArea = styled("div", {
   height: "100%",
   overflowY: "auto",
-  p: "$28",
+  p: "$$contentPadding",
+  $$contentPadding: "$space$28",
 });
 
 export const DrawerContent = forwardRef<DrawerContentRootProps, "div">(
