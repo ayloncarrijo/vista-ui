@@ -1,9 +1,8 @@
 import * as ToastPrimitive from "@radix-ui/react-toast";
 import { fadeOut, keyframes, styled } from "@vista-ui/core";
-import type { PolymorphicComponentProps } from "../../types/forward-ref";
 import { forwardRef } from "../../utils/forward-ref";
 
-export type ToastProps = PolymorphicComponentProps<typeof Toast>;
+export type ToastProps = React.ComponentProps<typeof Toast>;
 
 export type ToastRootProps = React.ComponentProps<
   typeof ToastPrimitive.Root

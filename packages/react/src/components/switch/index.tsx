@@ -2,14 +2,13 @@ import * as SwitchPrimitive from "@radix-ui/react-switch";
 import { styled } from "@vista-ui/core";
 import { stateLayerHook } from "../../css";
 import { useControllableState } from "../../hooks/use-controllable-state";
-import type { PolymorphicComponentProps } from "../../types/forward-ref";
 import { forwardRef } from "../../utils/forward-ref";
 import { FormLabel } from "../form-label";
 import { Icon } from "../icon";
 import { StateLayer } from "../state-layer";
 import { WrapIf } from "../wrap-if";
 
-export type SwitchProps = PolymorphicComponentProps<typeof Switch>;
+export type SwitchProps = React.ComponentProps<typeof Switch>;
 
 export type SwitchRootProps = React.ComponentProps<
   typeof SwitchPrimitive.Root

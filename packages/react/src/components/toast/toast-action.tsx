@@ -1,10 +1,9 @@
 import * as ToastPrimitive from "@radix-ui/react-toast";
-import type { PolymorphicComponentProps } from "../../types/forward-ref";
 import { forwardRef } from "../../utils/forward-ref";
 import { Box } from "../box";
 import { Button } from "../button";
 
-export type ToastActionProps = PolymorphicComponentProps<typeof ToastAction>;
+export type ToastActionProps = React.ComponentProps<typeof ToastAction>;
 
 export type ToastActionRootProps = React.ComponentProps<
   typeof ToastPrimitive.Action

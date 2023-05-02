@@ -1,12 +1,11 @@
 import { styled } from "@vista-ui/core";
 import type React from "react";
 import { stateLayerHook } from "../../css";
-import type { PolymorphicComponentProps } from "../../types/forward-ref";
 import { forwardRef } from "../../utils/forward-ref";
 import { Icon } from "../icon";
 import { StateLayer } from "../state-layer";
 
-export type DrawerItemProps = PolymorphicComponentProps<typeof DrawerItem>;
+export type DrawerItemProps = React.ComponentProps<typeof DrawerItem>;
 
 export type DrawerItemRootProps = {
   icon?: React.ReactNode;

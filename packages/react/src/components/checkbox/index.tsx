@@ -3,14 +3,13 @@ import { styled } from "@vista-ui/core";
 import type React from "react";
 import { iconButtonShape, stateLayerHook } from "../../css";
 import { useControllableState } from "../../hooks/use-controllable-state";
-import type { PolymorphicComponentProps } from "../../types/forward-ref";
 import { forwardRef } from "../../utils/forward-ref";
 import { FormLabel } from "../form-label";
 import { Icon } from "../icon";
 import { StateLayer } from "../state-layer";
 import { WrapIf } from "../wrap-if";
 
-export type CheckboxProps = PolymorphicComponentProps<typeof Checkbox>;
+export type CheckboxProps = React.ComponentProps<typeof Checkbox>;
 
 export type CheckboxRootProps = React.ComponentProps<
   typeof CheckboxPrimitive.Root

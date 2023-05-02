@@ -1,12 +1,11 @@
 import { styled } from "@vista-ui/core";
 import { iconButtonShape, stateLayerHook } from "../../css";
-import type { PolymorphicComponentProps } from "../../types/forward-ref";
 import { forwardRef } from "../../utils/forward-ref";
 import { Icon } from "../icon";
 import { StateLayer } from "../state-layer";
 import { Tooltip } from "../tooltip";
 
-export type IconButtonProps = PolymorphicComponentProps<typeof IconButton>;
+export type IconButtonProps = React.ComponentProps<typeof IconButton>;
 
 export type IconButtonRootProps = {
   label: string;

@@ -1,8 +1,7 @@
 import { styled } from "@vista-ui/core";
-import type { PolymorphicComponentProps } from "../../types/forward-ref";
 import { forwardRef } from "../../utils/forward-ref";
 
-export type DividerProps = PolymorphicComponentProps<typeof Divider>;
+export type DividerProps = React.ComponentProps<typeof Divider>;
 
 const StyledRoot = styled("div", {
   width: "100%",

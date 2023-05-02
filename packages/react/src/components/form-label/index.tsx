@@ -1,9 +1,8 @@
 import { styled } from "@vista-ui/core";
-import type { PolymorphicComponentProps } from "../../types/forward-ref";
 import { forwardRef } from "../../utils/forward-ref";
 import { Label, type LabelProps } from "../label";
 
-export type FormLabelProps = PolymorphicComponentProps<typeof FormLabel>;
+export type FormLabelProps = React.ComponentProps<typeof FormLabel>;
 
 export type FormLabelRootProps = LabelProps & {
   label: string;

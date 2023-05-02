@@ -1,13 +1,12 @@
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import { scaleDown, scaleUp, styled } from "@vista-ui/core";
 import { iconButtonShape, stateLayerHook } from "../../css";
-import type { PolymorphicComponentProps } from "../../types/forward-ref";
 import { forwardRef } from "../../utils/forward-ref";
 import { FormLabel } from "../form-label";
 import { StateLayer } from "../state-layer";
 import { WrapIf } from "../wrap-if";
 
-export type RadioProps = PolymorphicComponentProps<typeof Radio>;
+export type RadioProps = React.ComponentProps<typeof Radio>;
 
 export type RadioRootProps = React.ComponentProps<
   typeof RadioGroupPrimitive.Item

@@ -1,13 +1,12 @@
 import { styled } from "@vista-ui/core";
 import Spinner from "../../assets/icons/spinner.svg";
 import { stateLayerHook } from "../../css";
-import type { PolymorphicComponentProps } from "../../types/forward-ref";
 import { forwardRef } from "../../utils/forward-ref";
 import { Box } from "../box";
 import { Icon } from "../icon";
 import { StateLayer } from "../state-layer";
 
-export type ButtonProps = PolymorphicComponentProps<typeof Button>;
+export type ButtonProps = React.ComponentProps<typeof Button>;
 
 export type ButtonRootProps = {
   variant?: "elevated" | "filled" | "tonal" | "outlined" | "text";

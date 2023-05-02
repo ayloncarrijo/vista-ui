@@ -1,9 +1,8 @@
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 import { fadeIn, fadeOut, styled } from "@vista-ui/core";
-import type { PolymorphicComponentProps } from "../../types/forward-ref";
 import { forwardRef } from "../../utils/forward-ref";
 
-export type TooltipProps = PolymorphicComponentProps<typeof Tooltip>;
+export type TooltipProps = React.ComponentProps<typeof Tooltip>;
 
 export type TooltipRootProps = React.ComponentProps<
   typeof TooltipPrimitive.Root

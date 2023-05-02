@@ -1,12 +1,9 @@
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { fadeIn, fadeOut, keyframes, styled } from "@vista-ui/core";
 import type React from "react";
-import type { PolymorphicComponentProps } from "../../types/forward-ref";
 import { forwardRef } from "../../utils/forward-ref";
 
-export type DrawerContentProps = PolymorphicComponentProps<
-  typeof DrawerContent
->;
+export type DrawerContentProps = React.ComponentProps<typeof DrawerContent>;
 
 export type DrawerContentRootProps = React.ComponentProps<
   typeof DialogPrimitive.Content
@@ -57,8 +54,12 @@ const StyledContent = styled(DialogPrimitive.Content, {
 });
 
 const StyledScrollArea = styled("div", {
-  height: "100%",
   overflowY: "auto",
+  width: "100%",
+  height: "100%",
+  display: "flex",
+  flexDirection: "column",
+  gap: "$$contentPadding",
   p: "$$contentPadding",
   $$contentPadding: "$space$28",
 });
@@ -69,7 +70,7 @@ export const DrawerContent = forwardRef<DrawerContentRootProps, "div">(
       <StyledOverlay />
       <StyledContent
         ref={ref}
-        onOpenAutoFocus={(event: Event) => {
+        onOpenAutoFocus={(event) => {
           event.preventDefault();
           onOpenAutoFocus?.(event);
         }}

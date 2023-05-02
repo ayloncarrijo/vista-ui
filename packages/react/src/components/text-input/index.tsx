@@ -1,13 +1,12 @@
 import { styled } from "@vista-ui/core";
 import React from "react";
 import { useControllableState } from "../../hooks/use-controllable-state";
-import type { PolymorphicComponentProps } from "../../types/forward-ref";
 import { assignRef } from "../../utils/assign-ref";
 import { forwardRef } from "../../utils/forward-ref";
 import { Icon } from "../icon";
 import { Label } from "../label";
 
-export type TextInputProps = PolymorphicComponentProps<typeof TextInput>;
+export type TextInputProps = React.ComponentProps<typeof TextInput>;
 
 export type TextInputRootProps = {
   id: string;
