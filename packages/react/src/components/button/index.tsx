@@ -93,7 +93,11 @@ const StyledRoot = styled("button", stateLayerHook, {
       },
     },
     offset: {
-      true: { mx: "-$12", my: "-$8" },
+      true: {
+        display: "flex",
+        mx: "-$12",
+        my: "-$8",
+      },
     },
     fullWidth: {
       true: { width: "100%" },

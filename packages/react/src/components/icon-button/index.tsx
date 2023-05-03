@@ -48,7 +48,10 @@ const StyledRoot = styled("button", iconButtonShape, stateLayerHook, {
       selected: {},
     },
     offset: {
-      true: { m: "-$8" },
+      true: {
+        display: "flex",
+        m: "-$8",
+      },
     },
   },
   compoundVariants: [

@@ -1,18 +1,11 @@
 {
-  "version": "1.0.0-alpha.7",
+  "version": "1.0.0-alpha.8",
   "name": "@vista-ui/react",
   "license": "MIT",
   "type": "module",
   "module": "./build/index.mjs",
   "main": "./build/index.cjs",
   "types": "./build/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./build/index.mjs",
-      "require": "./build/index.cjs",
-      "types": "./build/index.d.ts"
-    }
-  },
   "files": [
     "build"
   ],

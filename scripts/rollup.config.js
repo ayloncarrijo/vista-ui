@@ -3,7 +3,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import svgr from "@svgr/rollup";
 import { defineConfig } from "rollup";
 import del from "rollup-plugin-delete";
-import external from "rollup-plugin-peer-deps-external";
+import externals from "rollup-plugin-node-externals";
 import typescript from "rollup-plugin-ts";
 
 export const createRollupConfig = () =>
@@ -22,7 +22,7 @@ export const createRollupConfig = () =>
     ],
     plugins: [
       !watch && del({ targets: "build/*" }),
-      external(),
+      externals(),
       resolve(),
       commonjs(),
       svgr(),

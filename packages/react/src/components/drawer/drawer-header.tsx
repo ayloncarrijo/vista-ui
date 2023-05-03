@@ -16,7 +16,7 @@ export const DrawerHeader = forwardRef<unknown, "div">(
   ({ children, ...props }, ref) => (
     <StyledRoot ref={ref} {...props}>
       {children}
-      <Box css={{ ml: "auto", display: "flex" }}>
+      <Box css={{ ml: "auto" }}>
         <DialogPrimitive.Close asChild>
           <IconButton label="Fechar menu" offset>
             close

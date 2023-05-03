@@ -6,7 +6,7 @@ import {
   isString,
   omit,
 } from "@ayloncarrijo/utilities";
-import type * as Material from "@material/material-color-utilities";
+import type * as Material from "@importantimport/material-color-utilities";
 import {
   argbFromHex,
   argbFromRgb,
@@ -14,7 +14,7 @@ import {
   greenFromArgb,
   redFromArgb,
   themeFromSourceColor,
-} from "@material/material-color-utilities";
+} from "@importantimport/material-color-utilities";
 import type {
   Color,
   ColorGroup,
