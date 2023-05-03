@@ -12,9 +12,10 @@ export type ButtonRootProps = {
   variant?: "elevated" | "filled" | "tonal" | "outlined" | "text";
   startIcon?: string;
   endIcon?: string;
-  fullWidth?: boolean;
   loading?: boolean;
   inverse?: boolean;
+  offset?: boolean;
+  fullWidth?: boolean;
 };
 
 const StyledRoot = styled("button", stateLayerHook, {
@@ -91,6 +92,9 @@ const StyledRoot = styled("button", stateLayerHook, {
         color: "$inversePrimary",
       },
     },
+    offset: {
+      true: { mx: "-$12", my: "-$8" },
+    },
     fullWidth: {
       true: { width: "100%" },
     },
@@ -105,6 +109,7 @@ export const Button = forwardRef<ButtonRootProps, "button">(
       endIcon,
       loading = false,
       inverse = false,
+      offset,
       disabled = false,
       children,
       ...props
@@ -115,6 +120,7 @@ export const Button = forwardRef<ButtonRootProps, "button">(
       ref={ref}
       variant={variant}
       inverse={inverse}
+      offset={offset}
       disabled={loading || disabled}
       {...props}
     >

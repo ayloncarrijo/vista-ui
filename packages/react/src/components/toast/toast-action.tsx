@@ -11,9 +11,9 @@ export type ToastActionRootProps = React.ComponentProps<
 
 export const ToastAction = forwardRef<ToastActionRootProps, "button">(
   ({ children, ...props }, ref) => (
-    <Box css={{ ml: "auto", mr: "-$8", my: "-$8" }}>
+    <Box css={{ ml: "auto", display: "flex" }}>
       <ToastPrimitive.Action asChild {...props}>
-        <Button ref={ref} variant="text" inverse>
+        <Button ref={ref} variant="text" offset inverse>
           {children}
         </Button>
       </ToastPrimitive.Action>
