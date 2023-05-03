@@ -11,6 +11,7 @@ export type IconButtonRootProps = {
   label: string;
   variant?: "filled" | "tonal" | "outlined" | "standard";
   toggle?: "no-toggle" | "unselected" | "selected";
+  offset?: boolean;
 };
 
 const TOGGLE_DEFAULTS = {
@@ -45,6 +46,11 @@ const StyledRoot = styled("button", iconButtonShape, stateLayerHook, {
     toggle: {
       unselected: {},
       selected: {},
+    },
+    offset: {
+      true: {
+        m: "-$8",
+      },
     },
   },
   compoundVariants: [
@@ -125,7 +131,14 @@ const StyledRoot = styled("button", iconButtonShape, stateLayerHook, {
 
 export const IconButton = forwardRef<IconButtonRootProps, "button">(
   (
-    { children, label, variant = "standard", toggle = "no-toggle", ...props },
+    {
+      children,
+      label,
+      variant = "standard",
+      toggle = "no-toggle",
+      offset,
+      ...props
+    },
     ref
   ) => (
     <Tooltip content={label}>
@@ -133,6 +146,7 @@ export const IconButton = forwardRef<IconButtonRootProps, "button">(
         ref={ref}
         variant={variant}
         toggle={toggle === "no-toggle" ? TOGGLE_DEFAULTS[variant] : toggle}
+        offset={offset}
         aria-label={label}
         {...props}
       >
