@@ -10,11 +10,7 @@ export const iconButtonShape: Css = {
   justifyContent: "center",
   borderRadius: "$full",
   userSelect: "none",
-  "&::before": {
-    content: "",
-    position: "absolute",
-    inset: "-$4",
-  },
+  outlineOffset: 0,
 };
 
 export const stateLayerHook: Css = {
