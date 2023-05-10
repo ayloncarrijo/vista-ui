@@ -99,8 +99,9 @@ const StyledIcon = styled("div", {
 });
 
 const StyledRoot = styled("div", {
-  display: "inline-flex",
+  display: "flex",
   flexDirection: "column",
+  pt: "$8",
   "&[data-start-icon='true']": {
     [String(StyledInputArea)]: {
       pl: "$12",
