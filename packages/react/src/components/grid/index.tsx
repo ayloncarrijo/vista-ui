@@ -4,7 +4,7 @@ export type GridProps = React.ComponentProps<typeof Grid>;
 
 export const Grid = styled("div", {
   display: "grid",
-  gap: "$16",
+  gap: "$columnGap",
   gridTemplateColumns: "repeat(4, 1fr)",
   "@sm": {
     gridTemplateColumns: "repeat(8, 1fr)",

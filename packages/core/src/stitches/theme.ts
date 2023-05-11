@@ -99,6 +99,7 @@ export const space = {
   448: convertPxToRem(448),
   480: convertPxToRem(480),
   512: convertPxToRem(512),
+  columnGap: convertPxToRem(16),
 };
 
 export const sizes = {
@@ -106,7 +107,6 @@ export const sizes = {
   xs: "480px",
   sm: "720px",
   md: "1072px",
-  container: "1072px",
   prose: "65ch",
 };
 

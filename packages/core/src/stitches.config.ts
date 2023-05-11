@@ -4,9 +4,9 @@ import { createStitches, defaultThemeMap } from "@stitches/react";
 import {
   borderWidths,
   colors,
-  fonts,
   fontSizes,
   fontWeights,
+  fonts,
   letterSpacings,
   lineHeights,
   opacities,

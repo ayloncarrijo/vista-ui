@@ -13,14 +13,17 @@ export const injectBaseStyles = globalCss({
     MozTabSize: 4,
     tabSize: 4,
     fontFeatureSettings: "normal",
-    typography: "$bodyLg",
+    scrollBehavior: "smooth",
   },
 
   body: {
     margin: 0,
-    lineHeight: "inherit",
     backgroundColor: "$surface",
     color: "$onSurface",
+    typography: "$bodyMd",
+    "@md": {
+      typography: "$bodyLg",
+    },
   },
 
   hr: {
