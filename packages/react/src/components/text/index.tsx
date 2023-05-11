@@ -16,7 +16,4 @@ export const Text = styled("p", {
       },
     },
   },
-  defaultVariants: {
-    typography: "bodyLg",
-  },
 });
