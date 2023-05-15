@@ -18,7 +18,7 @@ export const DrawerHeader = forwardRef<unknown, "div">(
       {children}
       <Box css={{ ml: "auto" }}>
         <DialogPrimitive.Close asChild>
-          <IconButton label="Fechar menu" offset>
+          <IconButton label="Fechar menu" offset tooltip={false}>
             close
           </IconButton>
         </DialogPrimitive.Close>

@@ -12,6 +12,7 @@ export type IconButtonRootProps = {
   variant?: "filled" | "tonal" | "outlined" | "standard";
   toggle?: "no-toggle" | "unselected" | "selected";
   offset?: boolean;
+  tooltip?: boolean;
 };
 
 const TOGGLE_DEFAULTS = {
@@ -138,11 +139,12 @@ export const IconButton = forwardRef<IconButtonRootProps, "button">(
       variant = "standard",
       toggle = "no-toggle",
       offset,
+      tooltip = true,
       ...props
     },
     ref
   ) => (
-    <Tooltip content={label}>
+    <Tooltip content={label} open={tooltip ? undefined : false}>
       <StyledRoot
         ref={ref}
         variant={variant}

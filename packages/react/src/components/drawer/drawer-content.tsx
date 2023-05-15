@@ -65,14 +65,14 @@ const StyledScrollArea = styled("div", {
 });
 
 export const DrawerContent = forwardRef<DrawerContentRootProps, "div">(
-  ({ children, onOpenAutoFocus, ...props }, ref) => (
+  ({ onCloseAutoFocus, children, ...props }, ref) => (
     <DialogPrimitive.Portal>
       <StyledOverlay />
       <StyledContent
         ref={ref}
-        onOpenAutoFocus={(event) => {
+        onCloseAutoFocus={(event) => {
           event.preventDefault();
-          onOpenAutoFocus?.(event);
+          onCloseAutoFocus?.(event);
         }}
         {...props}
       >
