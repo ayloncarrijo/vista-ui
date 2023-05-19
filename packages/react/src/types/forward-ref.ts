@@ -4,16 +4,21 @@ import type { Css } from "@vista-ui/core";
 // TODO: Review performance of generic constraints
 // https://github.com/microsoft/TypeScript/issues/53035
 
+export type AdditionalProps<As> = {
+  as?: As;
+  css?: Css;
+};
+
 export type ComponentRef<T> = T extends React.ElementType
   ? React.ComponentRef<T>
   : never;
 
+export type PolymorphicProps<Props, As> = As extends React.ElementType
+  ? LeftJoin<Props & AdditionalProps<As>, React.ComponentPropsWithoutRef<As>>
+  : never;
+
 export type PolymorphicPropsWithRef<Props, As> = PolymorphicProps<Props, As> &
   React.RefAttributes<ComponentRef<As>>;
-
-export type PolymorphicProps<Props, As> = As extends React.ElementType
-  ? { as?: As; css?: Css } & LeftJoin<Props, React.ComponentPropsWithoutRef<As>>
-  : never;
 
 export type PolymorphicRenderFn<Props, DefaultAs> = (
   props: PolymorphicProps<Props, DefaultAs>,

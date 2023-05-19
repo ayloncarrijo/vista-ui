@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-alpha.13",
+  "version": "1.0.0-alpha.14",
   "name": "@vista-ui/react",
   "license": "MIT",
   "type": "module",
@@ -28,7 +28,7 @@
     "@radix-ui/react-tooltip": "^1.0.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.21.4",
+    "@babel/core": "^7.21.8",
     "@stitches/react": "^1.2.8",
     "@storybook/addon-essentials": "7.0.0-rc.5",
     "@storybook/addon-interactions": "7.0.0-rc.5",
@@ -38,8 +38,8 @@
     "@storybook/react-webpack5": "7.0.0-rc.5",
     "@storybook/testing-library": "0.0.14-next.1",
     "@svgr/webpack": "^7.0.0",
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.1",
+    "@types/react": "^18.2.6",
+    "@types/react-dom": "^18.2.4",
     "@vista-ui/core": "workspace:*",
     "prop-types": "15.8.1",
     "react": "^18.2.0",
