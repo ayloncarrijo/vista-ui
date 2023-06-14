@@ -1,5 +1,6 @@
 import { createFromEntries } from "@ayloncarrijo/utilities";
-import { styled, typography } from "@vista-ui/core";
+import { typography } from "@vista-ui/core";
+import { styled } from "../../utils/styled";
 
 export type TextProps = React.ComponentProps<typeof Text>;
 

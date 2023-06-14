@@ -1,12 +1,17 @@
-import type { Meta } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react";
 import { TextInput, type TextInputProps } from ".";
 
-const meta: Meta<TextInputProps> = {
+type Args = TextInputProps & {
+  as: "input" | "textarea";
+};
+
+const meta: Meta<Args> = {
   title: "Components/TextInput",
   component: TextInput,
   args: {
     id: "vista-ui-input",
     as: "input",
+    type: "email",
     label: "E-mail",
     helper: "A helper text",
     error: "",
@@ -32,4 +37,14 @@ const meta: Meta<TextInputProps> = {
 
 export default meta;
 
-export const Default = {};
+export const Default: StoryFn<Args> = ({ as, ...props }) => {
+  if (as === "textarea") {
+    return (
+      <TextInput asChild {...props}>
+        <textarea />
+      </TextInput>
+    );
+  }
+
+  return <TextInput {...props} />;
+};

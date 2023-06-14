@@ -1,14 +1,11 @@
-import { styled } from "@vista-ui/core";
 import React from "react";
 import { useControllableState } from "../../hooks/use-controllable-state";
 import { assignRef } from "../../utils/assign-ref";
-import { forwardRef } from "../../utils/forward-ref";
+import { styled } from "../../utils/styled";
 import { Icon } from "../icon";
 import { Label } from "../label";
 
-export type TextInputProps = React.ComponentProps<typeof TextInput>;
-
-export type TextInputRootProps = {
+export type TextInputProps = React.ComponentProps<typeof StyledInput> & {
   id: string;
   label: string;
   helper?: string;
@@ -39,6 +36,9 @@ const StyledInput = styled("input", {
   color: "$onSurface",
   "&:disabled": {
     color: "$disabledContent",
+  },
+  "&:-webkit-autofill": {
+    WebkitBackgroundClip: "text",
   },
 });
 
@@ -162,7 +162,7 @@ const StyledRoot = styled("div", {
   },
 });
 
-export const TextInput = forwardRef<TextInputRootProps, "input">(
+export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
   (
     {
       id,
@@ -272,3 +272,5 @@ export const TextInput = forwardRef<TextInputRootProps, "input">(
     );
   }
 );
+
+TextInput.displayName = "TextInput";

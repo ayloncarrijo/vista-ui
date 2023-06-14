@@ -1,5 +1,5 @@
 import * as AspectRatioPrimitive from "@radix-ui/react-aspect-ratio";
-import { styled } from "@vista-ui/core";
+import { styled } from "../../utils/styled";
 
 export type AspectRatioProps = React.ComponentProps<typeof AspectRatio>;
 

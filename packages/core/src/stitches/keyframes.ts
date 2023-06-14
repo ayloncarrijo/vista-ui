@@ -1,4 +1,4 @@
-import { keyframes } from "@stitches/react";
+import { keyframes } from "@stitches/core";
 
 export const fadeIn = keyframes({
   "0%": { opacity: 0 },

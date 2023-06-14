@@ -11,7 +11,7 @@ export default meta;
 
 export const Default: StoryFn = () => (
   <Box
-    as="button"
+    asChild
     css={{
       width: "$256",
       height: "$256",
@@ -28,8 +28,10 @@ export const Default: StoryFn = () => (
       ...stateLayerHook,
     }}
   >
-    Activate a state by hovering, clicking, or focusing
-    <StateLayer />
+    <button type="button">
+      Activate a state by hovering, clicking, or focusing
+      <StateLayer />
+    </button>
   </Box>
 );
 

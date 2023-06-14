@@ -1,6 +1,6 @@
 import * as ToastPrimitive from "@radix-ui/react-toast";
-import { styled } from "@vista-ui/core";
 import type React from "react";
+import { styled } from "../../utils/styled";
 
 export type ToastViewportProps = React.ComponentProps<typeof ToastViewport>;
 

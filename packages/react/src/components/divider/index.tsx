@@ -1,7 +1,8 @@
-import { styled } from "@vista-ui/core";
-import { forwardRef } from "../../utils/forward-ref";
+import React from "react";
+import { styled } from "../../utils/styled";
+import { Slottable } from "../slot";
 
-export type DividerProps = React.ComponentProps<typeof Divider>;
+export type DividerProps = React.ComponentProps<typeof StyledRoot>;
 
 const StyledRoot = styled("div", {
   width: "100%",
@@ -20,12 +21,20 @@ const StyledContent = styled("span", {
   typography: "$bodySm",
 });
 
-export const Divider = forwardRef<unknown, "div">(
+export const Divider = React.forwardRef<HTMLDivElement, DividerProps>(
   ({ children, ...props }, ref) => (
     <StyledRoot ref={ref} {...props}>
-      <StyledLine />
-      {Boolean(children) && <StyledContent>{children}</StyledContent>}
-      <StyledLine />
+      <Slottable inherit={children}>
+        {(child) => (
+          <>
+            <StyledLine />
+            {Boolean(child) && <StyledContent>{child}</StyledContent>}
+            <StyledLine />
+          </>
+        )}
+      </Slottable>
     </StyledRoot>
   )
 );
+
+Divider.displayName = "Divider";

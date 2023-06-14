@@ -1,13 +1,10 @@
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
-import { fadeIn, fadeOut, styled } from "@vista-ui/core";
-import { forwardRef } from "../../utils/forward-ref";
+import { fadeIn, fadeOut } from "@vista-ui/core";
+import React from "react";
+import { styled } from "../../utils/styled";
 
-export type TooltipProps = React.ComponentProps<typeof Tooltip>;
-
-export type TooltipRootProps = React.ComponentProps<
-  typeof TooltipPrimitive.Root
-> &
-  React.ComponentProps<typeof TooltipPrimitive.Content> & {
+export type TooltipProps = React.ComponentProps<typeof TooltipPrimitive.Root> &
+  React.ComponentProps<typeof StyledContent> & {
     content: React.ReactNode;
   };
 
@@ -29,7 +26,7 @@ const StyledContent = styled(TooltipPrimitive.Content, {
   },
 });
 
-export const Tooltip = forwardRef<TooltipRootProps, "div">(
+export const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
   (
     {
       content,
@@ -42,20 +39,24 @@ export const Tooltip = forwardRef<TooltipRootProps, "div">(
       ...props
     },
     ref
-  ) => (
-    <TooltipPrimitive.Root
-      open={open}
-      defaultOpen={defaultOpen}
-      onOpenChange={onOpenChange}
-      delayDuration={delayDuration}
-      disableHoverableContent={disableHoverableContent}
-    >
-      <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>
-      <StyledContent ref={ref} sideOffset={8} {...props}>
-        {content}
-      </StyledContent>
-    </TooltipPrimitive.Root>
-  )
+  ) => {
+    return (
+      <TooltipPrimitive.Root
+        open={open}
+        defaultOpen={defaultOpen}
+        onOpenChange={onOpenChange}
+        delayDuration={delayDuration}
+        disableHoverableContent={disableHoverableContent}
+      >
+        <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>
+        <StyledContent ref={ref} sideOffset={8} {...props}>
+          {content}
+        </StyledContent>
+      </TooltipPrimitive.Root>
+    );
+  }
 );
+
+Tooltip.displayName = "Tooltip";
 
 export * from "./tooltip-provider";

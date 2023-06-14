@@ -1,18 +1,15 @@
 import * as SwitchPrimitive from "@radix-ui/react-switch";
-import { styled } from "@vista-ui/core";
+import React from "react";
 import { stateLayerHook } from "../../css";
 import { useControllableState } from "../../hooks/use-controllable-state";
-import { forwardRef } from "../../utils/forward-ref";
+import { styled } from "../../utils/styled";
 import { FormLabel } from "../form-label";
 import { Icon } from "../icon";
+import { Slottable } from "../slot";
 import { StateLayer } from "../state-layer";
 import { WrapIf } from "../wrap-if";
 
-export type SwitchProps = React.ComponentProps<typeof Switch>;
-
-export type SwitchRootProps = React.ComponentProps<
-  typeof SwitchPrimitive.Root
-> & {
+export type SwitchProps = React.ComponentProps<typeof StyledRoot> & {
   label?: string;
 };
 
@@ -111,9 +108,10 @@ const StyledRoot = styled(SwitchPrimitive.Root, stateLayerHook, {
   },
 });
 
-export const Switch = forwardRef<SwitchRootProps, "button">(
+export const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
   (
     {
+      children,
       label,
       disabled = false,
       checked,
@@ -154,13 +152,19 @@ export const Switch = forwardRef<SwitchRootProps, "button">(
           disabled={disabled}
           {...props}
         >
-          <StyledThumb>
-            <StyledThumbBackground />
-            <Icon size="xs">{isChecked ? "check" : "close"}</Icon>
-            <StateLayer css={{ inset: "-$8" }} />
-          </StyledThumb>
+          <Slottable inherit={children}>
+            {() => (
+              <StyledThumb>
+                <StyledThumbBackground />
+                <Icon size="xs">{isChecked ? "check" : "close"}</Icon>
+                <StateLayer css={{ inset: "-$8" }} />
+              </StyledThumb>
+            )}
+          </Slottable>
         </StyledRoot>
       </WrapIf>
     );
   }
 );
+
+Switch.displayName = "Switch";

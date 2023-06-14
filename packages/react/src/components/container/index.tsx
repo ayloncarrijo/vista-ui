@@ -1,4 +1,4 @@
-import { styled } from "@vista-ui/core";
+import { styled } from "../../utils/styled";
 
 export type ContainerProps = React.ComponentProps<typeof Container>;
 

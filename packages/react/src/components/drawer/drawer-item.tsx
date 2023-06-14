@@ -1,13 +1,11 @@
-import { styled } from "@vista-ui/core";
-import type React from "react";
+import React from "react";
 import { stateLayerHook } from "../../css";
-import { forwardRef } from "../../utils/forward-ref";
+import { styled } from "../../utils/styled";
 import { Icon } from "../icon";
+import { Slottable } from "../slot";
 import { StateLayer } from "../state-layer";
 
-export type DrawerItemProps = React.ComponentProps<typeof DrawerItem>;
-
-export type DrawerItemRootProps = {
+export type DrawerItemProps = React.ComponentProps<typeof StyledRoot> & {
   icon?: React.ReactNode;
   active?: boolean;
 };
@@ -40,12 +38,22 @@ const StyledContent = styled("span", {
   textOverflow: "ellipsis",
 });
 
-export const DrawerItem = forwardRef<DrawerItemRootProps, "a">(
-  ({ children, icon, ...props }, ref) => (
-    <StyledRoot ref={ref} {...props}>
-      {Boolean(icon) && <Icon>{icon}</Icon>}
-      <StyledContent>{children}</StyledContent>
-      <StateLayer />
-    </StyledRoot>
-  )
+export const DrawerItem = React.forwardRef<HTMLAnchorElement, DrawerItemProps>(
+  ({ children, icon, ...props }, ref) => {
+    return (
+      <StyledRoot ref={ref} {...props}>
+        <Slottable inherit={children}>
+          {(child) => (
+            <>
+              {Boolean(icon) && <Icon>{icon}</Icon>}
+              <StyledContent>{child}</StyledContent>
+              <StateLayer />
+            </>
+          )}
+        </Slottable>
+      </StyledRoot>
+    );
+  }
 );
+
+DrawerItem.displayName = "DrawerItem";

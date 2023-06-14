@@ -1,6 +1,6 @@
 import type { ValueOf } from "@ayloncarrijo/utilities";
-import type * as Stitches from "@stitches/react";
-import { createStitches, defaultThemeMap } from "@stitches/react";
+import type * as Stitches from "@stitches/core";
+import { createStitches, defaultThemeMap } from "@stitches/core";
 import {
   borderWidths,
   colors,
@@ -151,6 +151,5 @@ export const {
   keyframes,
   prefix,
   reset,
-  styled,
   theme,
 } = stitches;

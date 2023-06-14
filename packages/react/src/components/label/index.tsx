@@ -1,5 +1,5 @@
 import * as LabelPrimitive from "@radix-ui/react-label";
-import { styled } from "@vista-ui/core";
+import { styled } from "../../utils/styled";
 
 export type LabelProps = React.ComponentProps<typeof Label>;
 

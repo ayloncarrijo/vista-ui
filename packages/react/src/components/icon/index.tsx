@@ -1,5 +1,5 @@
 import { convertPxToRem } from "@ayloncarrijo/utilities";
-import { styled } from "@vista-ui/core";
+import { styled } from "../../utils/styled";
 
 export type IconProps = React.ComponentProps<typeof Icon>;
 

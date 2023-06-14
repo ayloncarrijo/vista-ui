@@ -3,7 +3,7 @@ import {
   getEntries,
   isString,
 } from "@ayloncarrijo/utilities";
-import type { DefaultThemeMap } from "@stitches/react";
+import type { DefaultThemeMap } from "@stitches/core";
 
 export const addRgbToColorToken = (value: string): string =>
   value.replace(/(\$.*?(?=$|\s))/g, "rgb($1)");

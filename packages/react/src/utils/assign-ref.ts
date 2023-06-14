@@ -1,7 +1,9 @@
 import { isFunction } from "@ayloncarrijo/utilities";
 import type React from "react";
 
-export const assignRef = <T>(...refs: Array<React.ForwardedRef<T>>) => {
+export const assignRef = <T>(
+  ...refs: Array<React.ForwardedRef<T> | null | undefined>
+) => {
   return (instance: T) => {
     refs.forEach((ref) => {
       if (ref != null) {

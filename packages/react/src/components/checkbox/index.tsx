@@ -1,19 +1,15 @@
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
-import { styled } from "@vista-ui/core";
-import type React from "react";
+import React from "react";
 import { iconButtonShape, stateLayerHook } from "../../css";
 import { useControllableState } from "../../hooks/use-controllable-state";
-import { forwardRef } from "../../utils/forward-ref";
+import { styled } from "../../utils/styled";
 import { FormLabel } from "../form-label";
 import { Icon } from "../icon";
+import { Slottable } from "../slot";
 import { StateLayer } from "../state-layer";
 import { WrapIf } from "../wrap-if";
 
-export type CheckboxProps = React.ComponentProps<typeof Checkbox>;
-
-export type CheckboxRootProps = React.ComponentProps<
-  typeof CheckboxPrimitive.Root
-> & {
+export type CheckboxProps = React.ComponentProps<typeof StyledRoot> & {
   label?: string;
   error?: boolean;
 };
@@ -86,9 +82,10 @@ const StyledRoot = styled(
   }
 );
 
-export const Checkbox = forwardRef<CheckboxRootProps, "button">(
+export const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
   (
     {
+      children,
       label,
       disabled = false,
       error = false,
@@ -132,16 +129,24 @@ export const Checkbox = forwardRef<CheckboxRootProps, "button">(
           data-error={error}
           {...props}
         >
-          <StyledContainer>
-            <StyledIndicator>
-              <Icon size="sm">
-                {isChecked === "indeterminate" ? "remove" : "check"}
-              </Icon>
-            </StyledIndicator>
-          </StyledContainer>
-          <StateLayer />
+          <Slottable inherit={children}>
+            {() => (
+              <>
+                <StyledContainer>
+                  <StyledIndicator>
+                    <Icon size="sm">
+                      {isChecked === "indeterminate" ? "remove" : "check"}
+                    </Icon>
+                  </StyledIndicator>
+                </StyledContainer>
+                <StateLayer />
+              </>
+            )}
+          </Slottable>
         </StyledRoot>
       </WrapIf>
     );
   }
 );
+
+Checkbox.displayName = "Checkbox";

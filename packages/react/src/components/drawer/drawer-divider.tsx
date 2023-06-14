@@ -1,4 +1,4 @@
-import { styled } from "@vista-ui/core";
+import { styled } from "../../utils/styled";
 import { Divider } from "../divider";
 
 export type DrawerDividerProps = React.ComponentProps<typeof DrawerDivider>;

@@ -1,12 +1,10 @@
 import * as ToastPrimitive from "@radix-ui/react-toast";
-import { fadeOut, keyframes, styled } from "@vista-ui/core";
-import { forwardRef } from "../../utils/forward-ref";
+import { fadeOut, keyframes } from "@vista-ui/core";
+import React from "react";
+import { styled } from "../../utils/styled";
+import { Slottable } from "../slot";
 
-export type ToastProps = React.ComponentProps<typeof Toast>;
-
-export type ToastRootProps = React.ComponentProps<
-  typeof ToastPrimitive.Root
-> & {
+export type ToastProps = React.ComponentProps<typeof StyledRoot> & {
   message: string;
 };
 
@@ -60,14 +58,24 @@ const StyledRoot = styled(ToastPrimitive.Root, {
   },
 });
 
-export const Toast = forwardRef<ToastRootProps, "li">(
-  ({ message, children, ...props }, ref) => (
-    <StyledRoot ref={ref} {...props}>
-      <ToastPrimitive.Description>{message}</ToastPrimitive.Description>
-      {children}
-    </StyledRoot>
-  )
+export const Toast = React.forwardRef<HTMLLIElement, ToastProps>(
+  ({ message, children, ...props }, ref) => {
+    return (
+      <StyledRoot ref={ref} {...props}>
+        <Slottable inherit={children}>
+          {(child) => (
+            <>
+              <ToastPrimitive.Description>{message}</ToastPrimitive.Description>
+              {child}
+            </>
+          )}
+        </Slottable>
+      </StyledRoot>
+    );
+  }
 );
+
+Toast.displayName = "Toast";
 
 export * from "./toast-action";
 export * from "./toast-provider";

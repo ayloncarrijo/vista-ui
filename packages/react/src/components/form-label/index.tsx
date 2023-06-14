@@ -1,10 +1,9 @@
-import { styled } from "@vista-ui/core";
-import { forwardRef } from "../../utils/forward-ref";
-import { Label, type LabelProps } from "../label";
+import React from "react";
+import { styled } from "../../utils/styled";
+import { Label } from "../label";
+import { Slottable } from "../slot";
 
-export type FormLabelProps = React.ComponentProps<typeof FormLabel>;
-
-export type FormLabelRootProps = LabelProps & {
+export type FormLabelProps = React.ComponentProps<typeof StyledRoot> & {
   label: string;
   side?: "top" | "right" | "bottom" | "left";
   disabled?: boolean;
@@ -46,7 +45,7 @@ const StyledRoot = styled(Label, {
   },
 });
 
-export const FormLabel = forwardRef<FormLabelRootProps, "label">(
+export const FormLabel = React.forwardRef<HTMLLabelElement, FormLabelProps>(
   (
     {
       children,
@@ -57,16 +56,26 @@ export const FormLabel = forwardRef<FormLabelRootProps, "label">(
       ...props
     },
     ref
-  ) => (
-    <StyledRoot
-      ref={ref}
-      side={side}
-      data-disabled={disabled}
-      data-error={error}
-      {...props}
-    >
-      {children}
-      <span>{label}</span>
-    </StyledRoot>
-  )
+  ) => {
+    return (
+      <StyledRoot
+        ref={ref}
+        side={side}
+        data-disabled={disabled}
+        data-error={error}
+        {...props}
+      >
+        <Slottable inherit={children}>
+          {(child) => (
+            <>
+              {child}
+              <span>{label}</span>
+            </>
+          )}
+        </Slottable>
+      </StyledRoot>
+    );
+  }
 );
+
+FormLabel.displayName = "FormLabel";

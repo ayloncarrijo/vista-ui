@@ -1,16 +1,14 @@
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
-import { scaleDown, scaleUp, styled } from "@vista-ui/core";
+import { scaleDown, scaleUp } from "@vista-ui/core";
+import React from "react";
 import { iconButtonShape, stateLayerHook } from "../../css";
-import { forwardRef } from "../../utils/forward-ref";
+import { styled } from "../../utils/styled";
 import { FormLabel } from "../form-label";
+import { Slottable } from "../slot";
 import { StateLayer } from "../state-layer";
 import { WrapIf } from "../wrap-if";
 
-export type RadioProps = React.ComponentProps<typeof Radio>;
-
-export type RadioRootProps = React.ComponentProps<
-  typeof RadioGroupPrimitive.Item
-> & {
+export type RadioProps = React.ComponentProps<typeof StyledRoot> & {
   label?: string;
   error?: boolean;
 };
@@ -70,8 +68,8 @@ const StyledRoot = styled(
   }
 );
 
-export const Radio = forwardRef<RadioRootProps, "button">(
-  ({ label, disabled = false, error = false, ...props }, ref) => {
+export const Radio = React.forwardRef<HTMLButtonElement, RadioProps>(
+  ({ children, label, disabled = false, error = false, ...props }, ref) => {
     return (
       <WrapIf
         wrappers={[
@@ -91,12 +89,20 @@ export const Radio = forwardRef<RadioRootProps, "button">(
         ]}
       >
         <StyledRoot ref={ref} disabled={disabled} data-error={error} {...props}>
-          <StyledContainer>
-            <StyledIndicator />
-          </StyledContainer>
-          <StateLayer />
+          <Slottable inherit={children}>
+            {() => (
+              <>
+                <StyledContainer>
+                  <StyledIndicator />
+                </StyledContainer>
+                <StateLayer />
+              </>
+            )}
+          </Slottable>
         </StyledRoot>
       </WrapIf>
     );
   }
 );
+
+Radio.displayName = "Radio";

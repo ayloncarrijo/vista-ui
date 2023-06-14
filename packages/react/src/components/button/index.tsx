@@ -1,24 +1,21 @@
-import { styled } from "@vista-ui/core";
+import React from "react";
 import Spinner from "../../assets/icons/spinner.svg";
 import { stateLayerHook } from "../../css";
-import { forwardRef } from "../../utils/forward-ref";
+import { styled } from "../../utils/styled";
 import { Box } from "../box";
 import { Icon } from "../icon";
+import { Slottable } from "../slot";
 import { StateLayer } from "../state-layer";
 
-export type ButtonProps = React.ComponentProps<typeof Button>;
-
-export type ButtonRootProps = {
-  variant?: "elevated" | "filled" | "tonal" | "outlined" | "text";
+export type ButtonProps = React.ComponentProps<typeof StyledRoot> & {
+  loading?: boolean;
   startIcon?: string;
   endIcon?: string;
-  loading?: boolean;
-  inverse?: boolean;
-  offset?: boolean;
-  fullWidth?: boolean;
 };
 
 const StyledRoot = styled("button", stateLayerHook, {
+  whiteSpace: "nowrap",
+  userSelect: "none",
   minWidth: "$48",
   height: "$40",
   px: "$24",
@@ -30,8 +27,6 @@ const StyledRoot = styled("button", stateLayerHook, {
   transition: "box-shadow $easeOut",
   typography: "$labelLg",
   lineHeight: "normal",
-  userSelect: "none",
-  whiteSpace: "nowrap",
   variants: {
     variant: {
       elevated: {
@@ -105,7 +100,7 @@ const StyledRoot = styled("button", stateLayerHook, {
   },
 });
 
-export const Button = forwardRef<ButtonRootProps, "button">(
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       variant = "filled",
@@ -119,51 +114,61 @@ export const Button = forwardRef<ButtonRootProps, "button">(
       ...props
     },
     ref
-  ) => (
-    <StyledRoot
-      ref={ref}
-      variant={variant}
-      inverse={inverse}
-      offset={offset}
-      disabled={loading || disabled}
-      {...props}
-    >
-      <Box
-        css={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          opacity: loading ? 0 : 1,
-        }}
+  ) => {
+    return (
+      <StyledRoot
+        ref={ref}
+        variant={variant}
+        inverse={inverse}
+        offset={offset}
+        disabled={loading || disabled}
+        {...props}
       >
-        {Boolean(startIcon) && (
-          <Icon
-            size="sm"
-            css={{ ml: variant === "text" ? 0 : "-$8", mr: "$8" }}
-          >
-            {startIcon}
-          </Icon>
-        )}
+        <Slottable inherit={children}>
+          {(child) => (
+            <>
+              <Box
+                css={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  opacity: loading ? 0 : 1,
+                }}
+              >
+                {Boolean(startIcon) && (
+                  <Icon
+                    size="sm"
+                    css={{ ml: variant === "text" ? 0 : "-$8", mr: "$8" }}
+                  >
+                    {startIcon}
+                  </Icon>
+                )}
 
-        <span>{children}</span>
+                <span>{child}</span>
 
-        {Boolean(endIcon) && (
-          <Icon
-            size="sm"
-            css={{ mr: variant === "text" ? 0 : "-$8", ml: "$8" }}
-          >
-            {endIcon}
-          </Icon>
-        )}
-      </Box>
+                {Boolean(endIcon) && (
+                  <Icon
+                    size="sm"
+                    css={{ mr: variant === "text" ? 0 : "-$8", ml: "$8" }}
+                  >
+                    {endIcon}
+                  </Icon>
+                )}
+              </Box>
 
-      {loading && (
-        <Box css={{ position: "absolute" }}>
-          <Spinner width={24} height={24} />
-        </Box>
-      )}
+              {loading && (
+                <Box css={{ position: "absolute" }}>
+                  <Spinner width={24} height={24} />
+                </Box>
+              )}
 
-      <StateLayer />
-    </StyledRoot>
-  )
+              <StateLayer />
+            </>
+          )}
+        </Slottable>
+      </StyledRoot>
+    );
+  }
 );
+
+Button.displayName = "Button";

@@ -1,13 +1,10 @@
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { fadeIn, fadeOut, keyframes, styled } from "@vista-ui/core";
-import type React from "react";
-import { forwardRef } from "../../utils/forward-ref";
+import { fadeIn, fadeOut, keyframes } from "@vista-ui/core";
+import React from "react";
+import { styled } from "../../utils/styled";
+import { Slottable } from "../slot";
 
-export type DrawerContentProps = React.ComponentProps<typeof DrawerContent>;
-
-export type DrawerContentRootProps = React.ComponentProps<
-  typeof DialogPrimitive.Content
->;
+export type DrawerContentProps = React.ComponentProps<typeof StyledContent>;
 
 export const slideIn = keyframes({
   "0%": { translate: "-100%" },
@@ -64,20 +61,25 @@ const StyledScrollArea = styled("div", {
   $$contentPadding: "$space$28",
 });
 
-export const DrawerContent = forwardRef<DrawerContentRootProps, "div">(
-  ({ onCloseAutoFocus, children, ...props }, ref) => (
-    <DialogPrimitive.Portal>
-      <StyledOverlay />
-      <StyledContent
-        ref={ref}
-        onCloseAutoFocus={(event) => {
-          event.preventDefault();
-          onCloseAutoFocus?.(event);
-        }}
-        {...props}
-      >
-        <StyledScrollArea>{children}</StyledScrollArea>
-      </StyledContent>
-    </DialogPrimitive.Portal>
-  )
-);
+export const DrawerContent = React.forwardRef<
+  HTMLDivElement,
+  DrawerContentProps
+>(({ onCloseAutoFocus, children, ...props }, ref) => (
+  <DialogPrimitive.Portal>
+    <StyledOverlay />
+    <StyledContent
+      ref={ref}
+      onCloseAutoFocus={(event) => {
+        event.preventDefault();
+        onCloseAutoFocus?.(event);
+      }}
+      {...props}
+    >
+      <Slottable inherit={children}>
+        {(child) => <StyledScrollArea>{child}</StyledScrollArea>}
+      </Slottable>
+    </StyledContent>
+  </DialogPrimitive.Portal>
+));
+
+DrawerContent.displayName = "DrawerContent";
